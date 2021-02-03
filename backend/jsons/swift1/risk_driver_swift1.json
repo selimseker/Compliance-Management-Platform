@@ -1,0 +1,138 @@
+[
+  {
+    "control_id": "1.1",
+    "risk_driver": "Compromise of enterprise authentication system"
+  },
+  { "control_id": "1.1", "risk_driver": "Compromise of user credentials" },
+  { "control_id": "1.1", "risk_driver": "Credential replay" },
+  { "control_id": "1.1", "risk_driver": "Exposure to internet-based attacks" },
+  { "control_id": "1.1", "risk_driver": "Unauthorised access" },
+  {
+    "control_id": "1.2",
+    "risk_driver": "Deletion of logs and forensic evidence"
+  },
+  { "control_id": "1.2", "risk_driver": "Excess privilege or access" },
+  { "control_id": "1.2", "risk_driver": "Lack of traceability" },
+  { "control_id": "1.2", "risk_driver": "Unauthorised system changes" },
+  { "control_id": "1.3", "risk_driver": "Unauthorised access" },
+  {
+    "control_id": "1.3",
+    "risk_driver": "Uncontrolled proliferation of systems and data"
+  },
+  { "control_id": "1.4", "risk_driver": "Exposure to internet-based attacks" },
+  {
+    "control_id": "2.1",
+    "risk_driver": "Loss of sensitive data confidentiality"
+  },
+  { "control_id": "2.1", "risk_driver": "Loss of sensitive data integrity" },
+  { "control_id": "2.1", "risk_driver": "Unauthenticated system traffic" },
+  { "control_id": "2.1", "risk_driver": "Unauthorised access" },
+  { "control_id": "2.1", "risk_driver": "Password theft" },
+  {
+    "control_id": "2.2",
+    "risk_driver": "Exploitation of known security vulnerabilities"
+  },
+  { "control_id": "2.3", "risk_driver": "Excess attack surface" },
+  {
+    "control_id": "2.3",
+    "risk_driver": "Exploitation of insecure system configuration"
+  },
+  {
+    "control_id": "2.4A",
+    "risk_driver": "Loss of sensitive data confidentiality"
+  },
+  { "control_id": "2.4A", "risk_driver": "Loss of sensitive data integrity" },
+  { "control_id": "2.4A", "risk_driver": "Unauthenticated system traffic" },
+  { "control_id": "2.5A", "risk_driver": "Compromise of trusted backup data" },
+  {
+    "control_id": "2.5A",
+    "risk_driver": "Loss of sensitive data confidentiality"
+  },
+  { "control_id": "2.6", "risk_driver": "Loss of operational confidentiality" },
+  { "control_id": "2.6", "risk_driver": "Loss of operational integrity" },
+  { "control_id": "2.6", "risk_driver": "Password theft" },
+  {
+    "control_id": "2.7",
+    "risk_driver": "Exploitation of known security vulnerabilities"
+  },
+  {
+    "control_id": "2.8A",
+    "risk_driver": "Exposure to sub-standard security practices"
+  },
+  {
+    "control_id": "2.9A",
+    "risk_driver": "Business conducted with an unauthorised counterparty"
+  },
+  {
+    "control_id": "2.9A",
+    "risk_driver": "Undetected anomalies or suspicious activity"
+  },
+  { "control_id": "2.10", "risk_driver": "Excess attack surface" },
+  {
+    "control_id": "2.10",
+    "risk_driver": "Exploitation of insecure application configuration"
+  },
+  {
+    "control_id": "2.11A",
+    "risk_driver": "Business conducted with an unauthorised counterparty"
+  },
+  { "control_id": "3.1", "risk_driver": "Lack of traceability" },
+  { "control_id": "3.1", "risk_driver": "Unauthorised physical access" },
+  {
+    "control_id": "4.1",
+    "risk_driver": "Password cracking, guessing, or other computational compromise"
+  },
+  { "control_id": "4.2", "risk_driver": "Credential replay" },
+  {
+    "control_id": "4.2",
+    "risk_driver": "Password cracking, guessing, or other computational compromise"
+  },
+  { "control_id": "4.2", "risk_driver": "Password theft" },
+  { "control_id": "5.1", "risk_driver": "Excess privilege or access" },
+  { "control_id": "5.1", "risk_driver": "Segregation of duty violations" },
+  { "control_id": "5.1", "risk_driver": "Unauthorised access" },
+  { "control_id": "5.2", "risk_driver": "Authentication token theft" },
+  { "control_id": "5.2", "risk_driver": "Lack of traceability" },
+  { "control_id": "5.2", "risk_driver": "HSM management misused" },
+  {
+    "control_id": "5.3A",
+    "risk_driver": "Untrustworthy staff or system operators"
+  },
+  { "control_id": "5.4", "risk_driver": "Password theft" },
+  { "control_id": "6.1", "risk_driver": "Execution of malicious code" },
+  {
+    "control_id": "6.1",
+    "risk_driver": "Exploitation of known security vulnerabilities"
+  },
+  { "control_id": "6.2", "risk_driver": "Unauthorised system changes" },
+  { "control_id": "6.3", "risk_driver": "Loss of sensitive data integrity" },
+  { "control_id": "6.4", "risk_driver": "Lack of traceability" },
+  {
+    "control_id": "6.4",
+    "risk_driver": "Undetected anomalies or suspicious activity"
+  },
+  {
+    "control_id": "6.5A",
+    "risk_driver": "Undetected anomalies or suspicious activity"
+  },
+  {
+    "control_id": "7.1",
+    "risk_driver": "Excess harm from deficient cyber readiness"
+  },
+  {
+    "control_id": "7.2",
+    "risk_driver": "Increased security risk from improperly trained staff"
+  },
+  {
+    "control_id": "7.3A",
+    "risk_driver": "Unknown security vulnerabilities or security misconfigurations"
+  },
+  {
+    "control_id": "7.4A",
+    "risk_driver": "Excess harm from deficient cyber readiness"
+  },
+  {
+    "control_id": "7.4A",
+    "risk_driver": "Unidentified sensitivity to cyber exposure"
+  }
+]

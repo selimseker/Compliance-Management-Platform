@@ -1,0 +1,97 @@
+<div
+    *ngIf="control_entry!=undefined"
+    class="d-flex flex-column h-100"
+>
+    <h3> {{control.info.title}} </h3>
+    <div class="h-100">
+
+        <app-gap-analysis-answer
+            class="mt-5"
+            [default_answers]="default_answer"
+            [disable]="form_disabled"
+            (answers)="onFormChange($event)"
+        ></app-gap-analysis-answer>
+
+        <div class="d-flex align-content-center">
+            <button
+                mat-raised-button
+                color="primary"
+                [disabled]="form_disabled"
+                (click)="onControlAnswerDone()"
+            >SUBMIT CONTROL</button>
+            <button
+                mat-raised-button
+                class="ml-3"
+                (click)="openInfoDialog()"
+            >INFO</button>
+
+            <p
+                *ngIf="form_disabled"
+                class="text-danger  align-self-center ml-3"
+            >Control already submitted!</p>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="h-100 d-flex flex-column pb-3">
+
+        <h4 class="pt-3 pb-3 ">Checklists</h4>
+        <mat-selection-list
+            #shoes
+            [multiple]="false"
+        >
+            <mat-list-option
+                class="border"
+                *ngFor="let checklist of control.checklists | slice: lowValue : highValue; let i = index"
+                [value]="checklist"
+                [disabled]="control_entry==undefined"
+                (click)="onChecklistClick(i)"
+            >
+                <div class="d-flex justify-content-between">
+                    <span class="control-list-text">{{checklist.checklist_id}}. {{checklist.checklist}}</span>
+                    <div class="d-flex justify-content-between">
+
+                        <div
+                            *ngIf="control_entry!=undefined"
+                            class="d-flex flex-row"
+                        >
+                            <span
+                                class="pr-3"
+                                [ngStyle]="{'color': (answer_colors.get(isChecklistAnswered.get(checklist.checklist_id)))}"
+                            >
+                                {{isChecklistAnswered.get(checklist.checklist_id)}} </span>
+
+                            <div class="d-flex">
+                                <mat-icon
+                                    class="p-0"
+                                    *ngIf="isChecklistAnswered.get(checklist.checklist_id)!=''"
+                                    matListIcon
+                                    color="primary"
+                                >check_circle</mat-icon>
+                                <mat-icon
+                                    class="p-0"
+                                    *ngIf="isChecklistAnswered.get(checklist.checklist_id)==''"
+                                    matListIcon
+                                    color="accent"
+                                >check_circle</mat-icon>
+                            </div>
+                        </div>
+                        <div *ngIf="control_entry==undefined">
+                            <mat-spinner
+                                diameter="20"
+                                class=" align-self-center"
+                            ></mat-spinner>
+                        </div>
+                    </div>
+                </div>
+            </mat-list-option>
+        </mat-selection-list>
+        <mat-paginator
+            class="mt-auto"
+            [length]="control.checklists.length"
+            [pageSize]="pageSize"
+            [pageSizeOptions]="pageSizeOptions"
+            (page)="getPaginatorData($event)"
+        >
+        </mat-paginator>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="container-fluid p-5 h-100 ">
+    <div class="border justify-content-center col d-flex flex-column p-5 h-100">
+        <h2>Projects</h2>
+
+        <div class=" d-flex flex-column ">
+            <table class="w-100" mat-table [dataSource]="dataSource">
+
+                <ng-container matColumnDef="project_title">
+                    <th mat-header-cell *matHeaderCellDef> Title </th>
+                    <td mat-cell *matCellDef="let element"> {{element.project_title}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="company">
+                    <th mat-header-cell *matHeaderCellDef> Company Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.company.name}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="standard">
+                    <th mat-header-cell *matHeaderCellDef>Standard</th>
+                    <td mat-cell *matCellDef="let element"> {{element.standard}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="auditors">
+                    <th mat-header-cell *matHeaderCellDef>Auditors</th>
+                    <td mat-cell *matCellDef="let element">example</td>
+                </ng-container>
+
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr class="clickable-row" mat-row (click)="openDialog(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+
+        </div>
+
+        <div class="pt-3 ">
+            <button mat-raised-button [routerLink]="'./create'" routerLinkActive="active" color="primary">START NEW PROJECT</button>
+        </div>
+    </div>
+</div>

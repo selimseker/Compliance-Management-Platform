@@ -1,0 +1,1149 @@
+{
+  "standard_name": "800-171A NIST",
+
+  "domains": [
+    {
+      "id": "3.1",
+      "title": "ACCESS CONTROL",
+      "control_ids": [
+        "3.1.1",
+        "3.1.2",
+        "3.1.3",
+        "3.1.4",
+        "3.1.5",
+        "3.1.6",
+        "3.1.7",
+        "3.1.8",
+        "3.1.9",
+        "3.1.10",
+        "3.1.11",
+        "3.1.12",
+        "3.1.13",
+        "3.1.14",
+        "3.1.15",
+        "3.1.16",
+        "3.1.17",
+        "3.1.18",
+        "3.1.19",
+        "3.1.20",
+        "3.1.21",
+        "3.1.22"
+      ]
+    },
+    {
+      "id": "3.2",
+      "title": "AWARENESS AND TRAINING",
+      "control_ids": ["3.2.1", "3.2.2", "3.2.3"]
+    },
+    {
+      "id": "3.3",
+      "title": "AUDIT AND ACCOUNTABILITY",
+      "control_ids": [
+        "3.3.1",
+        "3.3.2",
+        "3.3.3",
+        "3.3.4",
+        "3.3.5",
+        "3.3.6",
+        "3.3.7",
+        "3.3.8",
+        "3.3.9"
+      ]
+    },
+    {
+      "id": "3.4",
+      "title": "CONFIGURATION MANAGEMENT",
+      "control_ids": [
+        "3.4.1",
+        "3.4.2",
+        "3.4.3",
+        "3.4.4",
+        "3.4.5",
+        "3.4.6",
+        "3.4.7",
+        "3.4.8",
+        "3.4.9"
+      ]
+    },
+    {
+      "id": "3.5",
+      "title": "IDENTIFICATION AND AUTHENTICATION",
+      "control_ids": [
+        "3.5.1",
+        "3.5.2",
+        "3.5.3",
+        "3.5.4",
+        "3.5.5",
+        "3.5.6",
+        "3.5.7",
+        "3.5.8",
+        "3.5.9",
+        "3.5.10",
+        "3.5.11"
+      ]
+    },
+    {
+      "id": "3.6",
+      "title": "INCIDENT RESPONSE",
+      "control_ids": ["3.6.1", "3.6.2", "3.6.3"]
+    },
+    {
+      "id": "3.7",
+      "title": "MAINTENANCE",
+      "control_ids": ["3.7.1", "3.7.2", "3.7.3", "3.7.4", "3.7.5", "3.7.6"]
+    },
+    {
+      "id": "3.8",
+      "title": "MEDIA PROTECTION",
+      "control_ids": [
+        "3.8.1",
+        "3.8.2",
+        "3.8.3",
+        "3.8.4",
+        "3.8.5",
+        "3.8.6",
+        "3.8.7",
+        "3.8.8",
+        "3.8.9"
+      ]
+    },
+    {
+      "id": "3.9",
+      "title": "PERSONNEL SECURITY",
+      "control_ids": ["3.9.1", "3.9.2"]
+    },
+    {
+      "id": "3.10",
+      "title": "PHYSICAL PROTECTION",
+      "control_ids": [
+        "3.10.1",
+        "3.10.2",
+        "3.10.3",
+        "3.10.4",
+        "3.10.5",
+        "3.10.6"
+      ]
+    },
+    {
+      "id": "3.11",
+      "title": "RISK ASSESSMENT",
+      "control_ids": ["3.11.1", "3.11.2", "3.11.3"]
+    },
+    {
+      "id": "3.12",
+      "title": "SECURITY ASSESSMENT",
+      "control_ids": ["3.12.1", "3.12.2", "3.12.3", "3.12.4"]
+    },
+    {
+      "id": "3.13",
+      "title": "SYSTEM AND COMMUNICATIONS PROTECTION",
+      "control_ids": [
+        "3.13.1",
+        "3.13.2",
+        "3.13.3",
+        "3.13.4",
+        "3.13.5",
+        "3.13.6",
+        "3.13.7",
+        "3.13.8",
+        "3.13.9",
+        "3.13.10",
+        "3.13.11",
+        "3.13.12",
+        "3.13.13",
+        "3.13.14",
+        "3.13.15",
+        "3.13.16"
+      ]
+    },
+    {
+      "id": "3.14",
+      "title": "SYSTEM AND INFORMATION INTEGRITY",
+      "control_ids": [
+        "3.14.1",
+        "3.14.2",
+        "3.14.3",
+        "3.14.4",
+        "3.14.5",
+        "3.14.6",
+        "3.14.7"
+      ]
+    }
+  ],
+
+  "controls": [
+    {
+      "id": "3.1.1",
+      "title": "Limit system access to authorized users, processes acting on behalf of authorized users, and devices (including other systems).",
+      "checklists": [
+        "Authorized users are identified.",
+        "Processes acting on behalf of authorized users are identified.",
+        "Devices (and other systems) authorized to connect to the system are identified.",
+        "System access is limited to authorized users.",
+        "System access is limited to processes acting on behalf of authorized users.",
+        "System access is limited to authorized devices (including other systems)"
+      ]
+    },
+    {
+      "id": "3.1.2",
+      "title": "Limit system access to the types of transactions and functions that authorized users are permitted to execute",
+      "checklists": [
+        "The types of transactions and functions that authorized users are permitted to execute are defined.",
+        "System access is limited to the defined types of transactions and functions for authorized users."
+      ]
+    },
+    {
+      "id": "3.1.3",
+      "title": "Control the flow of CUI in accordance with approved authorizations.",
+      "checklists": [
+        "Information flow control policies are defined.",
+        "Methods and enforcement mechanisms for controlling the flow of CUI are defined.",
+        "Designated sources and destinations (e.g., networks, individuals, and devices) for CUI within the system and between interconnected systems are identified.",
+        "Authorizations for controlling the flow of CUI are defined.",
+        "Approved authorizations for controlling the flow of CUI are enforced."
+      ]
+    },
+    {
+      "id": "3.1.4",
+      "title": "Separate the duties of individuals to reduce the risk of malevolent activity without collusion.",
+      "checklists": [
+        "The duties of individuals requiring separation are defined.",
+        "Responsibilities for duties that require separation are assigned to separate individuals.",
+        "Access privileges that enable individuals to exercise the duties that require separation are granted to separate individuals."
+      ]
+    },
+    {
+      "id": "3.1.5",
+      "title": "Employ the principle of least privilege, including for specific security functions and privileged accounts.",
+      "checklists": [
+        "Privileged accounts are identified.",
+        "Access to privileged accounts is authorized in accordance with the principle of least privilege.",
+        "Security functions are identified.",
+        "Access to security functions is authorized in accordance with the principle of least privilege."
+      ]
+    },
+    {
+      "id": "3.1.6",
+      "title": "Use non-privileged accounts or roles when accessing nonsecurity functions.",
+      "checklists": [
+        "Nonsecurity functions are identified.",
+        "Users are required to use non-privileged accounts or roles when accessing nonsecurity functions."
+      ]
+    },
+    {
+      "id": "3.1.7",
+      "title": "Prevent non-privileged users from executing privileged functions and capture the execution of such functions in audit logs.",
+      "checklists": [
+        "Privileged functions are defined.",
+        "Non-privileged users are defined.",
+        "Non-privileged users are prevented from executing privileged functions.",
+        "The execution of privileged functions is captured in audit logs."
+      ]
+    },
+    {
+      "id": "3.1.8",
+      "title": "Limit unsuccessful logon attempts.",
+      "checklists": [
+        "The means of limiting unsuccessful logon attempts is defined.",
+        "The defined means of limiting unsuccessful logon attempts is implemented."
+      ]
+    },
+    {
+      "id": "3.1.9",
+      "title": "Provide privacy and security notices consistent with applicable CUI rules.",
+      "checklists": [
+        "Privacy and security notices required by CUI-specified rules are identified, consistent, and associated with the specific CUI category.",
+        "Privacy and security notices are displayed."
+      ]
+    },
+    {
+      "id": "3.1.10",
+      "title": "Use session lock with pattern-hiding displays to prevent access and viewing of data after a period of inactivity.",
+      "checklists": [
+        "The period of inactivity after which the system initiates a session lock is defined.",
+        "Access to the system and viewing of data is prevented by initiating a session lock after the defined period of inactivity.",
+        "Previously visible information is concealed via a pattern-hiding display after the defined period of inactivity."
+      ]
+    },
+    {
+      "id": "3.1.11",
+      "title": "Terminate (automatically) a user session after a defined condition.",
+      "checklists": [
+        "Conditions requiring a user session to terminate are defined.",
+        "A user session is automatically terminated after any of the defined conditions occur."
+      ]
+    },
+    {
+      "id": "3.1.12",
+      "title": "Monitor and control remote access sessions.",
+      "checklists": [
+        "Remote access sessions are permitted.",
+        "The types of permitted remote access are identified.",
+        "Remote access sessions are controlled.",
+        "Remote access sessions are monitored."
+      ]
+    },
+    {
+      "id": "3.1.13",
+      "title": "Employ cryptographic mechanisms to protect the confidentiality of remote access sessions.",
+      "checklists": [
+        "Cryptographic mechanisms to protect the confidentiality of remote access sessions are identified.",
+        "Cryptographic mechanisms to protect the confidentiality of remote access sessions are implemented."
+      ]
+    },
+    {
+      "id": "3.1.14",
+      "title": "Route remote access via managed access control points.",
+      "checklists": [
+        "Managed access control points are identified and implemented.",
+        "Remote access is routed through managed network access control points."
+      ]
+    },
+    {
+      "id": "3.1.15",
+      "title": "Authorize remote execution of privileged commands and remote access to security relevant information.",
+      "checklists": [
+        "Privileged commands authorized for remote execution are identified.",
+        "Security-relevant information authorized to be accessed remotely is identified.",
+        "The execution of the identified privileged commands via remote access is authorized.",
+        "Access to the identified security-relevant information via remote access is authorized."
+      ]
+    },
+    {
+      "id": "3.1.16",
+      "title": "Authorize wireless access prior to allowing such connections.",
+      "checklists": [
+        "Wireless access points are identified.",
+        "Wireless access is authorized prior to allowing such connections."
+      ]
+    },
+    {
+      "id": "3.1.17",
+      "title": "Protect wireless access using authentication and encryption.",
+      "checklists": [
+        "Wireless access to the system is protected using authentication.",
+        "Wireless access to the system is protected using encryption."
+      ]
+    },
+    {
+      "id": "3.1.18",
+      "title": "Control connection of mobile devices",
+      "checklists": [
+        "Mobile devices that process, store, or transmit CUI are identified.",
+        "Mobile device connections are authorized.",
+        "Mobile device connections are monitored and logged."
+      ]
+    },
+    {
+      "id": "3.1.19",
+      "title": "Encrypt CUI on mobile devices and mobile computing platforms",
+      "checklists": [
+        "Mobile devices and mobile computing platforms that process, store, or transmit CUI are identified.",
+        "Encryption is employed to protect CUI on identified mobile devices and mobile computing platforms."
+      ]
+    },
+    {
+      "id": "3.1.20",
+      "title": "Verify and control/limit connections to and use of external systems",
+      "checklists": [
+        "Connections to external systems are identified.",
+        "The use of external systems is identified.",
+        "Connections to external systems are verified.",
+        "The use of external systems is verified.",
+        "Connections to external systems are controlled/limited.",
+        "The use of external systems is controlled/limited."
+      ]
+    },
+    {
+      "id": "3.1.21",
+      "title": "Limit use of portable storage devices on external systems",
+      "checklists": [
+        "The use of portable storage devices containing CUI on external systems is identified and documented.",
+        "Limits on the use of portable storage devices containing CUI on external systems are defined.",
+        "The use of portable storage devices containing CUI on external systems is limited as defined."
+      ]
+    },
+    {
+      "id": "3.1.22",
+      "title": "Control CUI posted or processed on publicly accessible systems",
+      "checklists": [
+        "Individuals authorized to post or process information on publicly accessible systems are identified.",
+        "Procedures to ensure CUI is not posted or processed on publicly accessible systems are identified.",
+        "A review process is in place prior to posting of any content to publicly accessible systems.",
+        "Content on publicly accessible systems is reviewed to ensure that it does not include CUI.",
+        "Mechanisms are in place to remove and address improper posting of CUI."
+      ]
+    },
+    {
+      "id": "3.2.1",
+      "title": "Ensure that managers, systems administrators, and users of organizational systems are made aware of the security risks associated with their activities and of the applicable policies, standards, and procedures related to the security of those systems.",
+      "checklists": [
+        "Security risks associated with organizational activities involving CUI are identified.",
+        "Policies, standards, and procedures related to the security of the system are identified.",
+        "Managers, systems administrators, and users of the system are made aware of the security risks associated with their activities.",
+        "Managers, systems administrators, and users of the system are made aware of the applicable policies, standards, and procedures related to the security of the system."
+      ]
+    },
+    {
+      "id": "3.2.2",
+      "title": "Ensure that personnel are trained to carry out their assigned information security-related duties and responsibilities",
+      "checklists": [
+        "Information security-related duties, roles, and responsibilities are defined.",
+        "Information security-related duties, roles, and responsibilities are assigned to designated personnel.",
+        "Personnel are adequately trained to carry out their assigned information security-related duties, roles, and responsibilities."
+      ]
+    },
+    {
+      "id": "3.2.3",
+      "title": "Provide security awareness training on recognizing and reporting potential indicators of insider threat",
+      "checklists": [
+        "Potential indicators associated with insider threats are identified.",
+        "Security awareness training on recognizing and reporting potential indicators of insider threat is provided to managers and employees."
+      ]
+    },
+    {
+      "id": "3.3.1",
+      "title": "Create and retain system audit logs and records to the extent needed to enable the monitoring, analysis, investigation, and reporting of unlawful or unauthorized system activity.",
+      "checklists": [
+        "Audit logs needed (i.e., event types to be logged) to enable the monitoring, analysis, investigation, and reporting of unlawful or unauthorized system activity are specified.",
+        "The content of audit records needed to support monitoring, analysis, investigation, and reporting of unlawful or unauthorized system activity is defined.",
+        "Audit records are created (generated).",
+        "Audit records, once created, contain the defined content.",
+        "Retention requirements for audit records are defined.",
+        "Audit records are retained as defined."
+      ]
+    },
+    {
+      "id": "3.3.2",
+      "title": "Ensure that the actions of individual system users can be uniquely traced to those users so they can be held accountable for their actions",
+      "checklists": [
+        "The content of the audit records needed to support the ability to uniquely trace users to their actions is defined.",
+        "Audit records, once created, contain the defined content."
+      ]
+    },
+    {
+      "id": "3.3.3",
+      "title": "Review and update logged events",
+      "checklists": [
+        "A process for determining when to review logged events is defined.",
+        "Event types being logged are reviewed in accordance with the defined review process.",
+        "Event types being logged are updated based on the review."
+      ]
+    },
+    {
+      "id": "3.3.4",
+      "title": "Alert in the event of an audit logging process failure",
+      "checklists": [
+        "Personnel or roles to be alerted in the event of an audit logging process failure are identified.",
+        "Types of audit logging process failures for which alert will be generated are defined.",
+        "Identified personnel or roles are alerted in the event of an audit logging process failure."
+      ]
+    },
+    {
+      "id": "3.3.5",
+      "title": "Correlate audit record review, analysis, and reporting processes for investigation and response to indications of unlawful, unauthorized, suspicious, or unusual activity",
+      "checklists": [
+        "Audit record review, analysis, and reporting processes for investigation and response to indications of unlawful, unauthorized, suspicious, or unusual activity are defined.",
+        "Defined audit record review, analysis, and reporting processes are correlated."
+      ]
+    },
+    {
+      "id": "3.3.6",
+      "title": "Provide audit record reduction and report generation to support on-demand analysis and reporting",
+      "checklists": [
+        "An audit record reduction capability that supports on-demand analysis is provided.",
+        "A report generation capability that supports on-demand reporting is provided."
+      ]
+    },
+    {
+      "id": "3.3.7",
+      "title": "Provide a system capability that compares and synchronizes internal system clocks with an authoritative source to generate time stamps for audit records",
+      "checklists": [
+        "Internal system clocks are used to generate time stamps for audit records.",
+        "An authoritative source with which to compare and synchronize internal system clocks is specified.",
+        "Internal system clocks used to generate time stamps for audit records are compared to and synchronized with the specified authoritative time source."
+      ]
+    },
+    {
+      "id": "3.3.8",
+      "title": "Protect audit information and audit logging tools from unauthorized access, modification, and deletion",
+      "checklists": [
+        "Audit information is protected from unauthorized access.",
+        "Audit information is protected from unauthorized modification.",
+        "Audit information is protected from unauthorized deletion.",
+        "Audit logging tools are protected from unauthorized access.",
+        "Audit logging tools are protected from unauthorized modification.",
+        "Audit logging tools are protected from unauthorized deletion."
+      ]
+    },
+    {
+      "id": "3.3.9",
+      "title": "Limit management of audit logging functionality to a subset of privileged users",
+      "checklists": [
+        "A subset of privileged users granted access to manage audit logging functionality is defined.",
+        "Management of audit logging functionality is limited to the defined subset of privileged users."
+      ]
+    },
+    {
+      "id": "3.4.1",
+      "title": "Establish and maintain baseline configurations and inventories of organizational systems (including hardware, software, firmware, and documentation) throughout the respective system development life cycles",
+      "checklists": [
+        "A baseline configuration is established.",
+        "The baseline configuration includes hardware, software, firmware, and documentation.",
+        "The baseline configuration is maintained (reviewed and updated) throughout the system development life cycle.",
+        "A system inventory is established.",
+        "The system inventory includes hardware, software, firmware, and documentation.",
+        "The inventory is maintained (reviewed and updated) throughout the system development life cycle."
+      ]
+    },
+    {
+      "id": "3.4.2",
+      "title": "Establish and enforce security configuration settings for information technology products employed in organizational systems",
+      "checklists": [
+        "Security configuration settings for information technology products employed in the system are established and included in the baseline configuration.",
+        "Security configuration settings for information technology products employed in the system are enforced."
+      ]
+    },
+    {
+      "id": "3.4.3",
+      "title": "Track, review, approve or disapprove, and log changes to organizational systems",
+      "checklists": [
+        "Changes to the system are tracked.",
+        "Changes to the system are reviewed.",
+        "Changes to the system are approved or disapproved.",
+        "Changes to the system are logged."
+      ]
+    },
+    {
+      "id": "3.4.4",
+      "title": "Analyze the security impact of changes prior to implementation",
+      "checklists": [
+        "Determine if the security impact of changes to the system is analyzed prior to implementation."
+      ]
+    },
+    {
+      "id": "3.4.5",
+      "title": "Define, document, approve, and enforce physical and logical access restrictions associated with changes to organizational systems",
+      "checklists": [
+        "Physical access restrictions associated with changes to the system are defined.",
+        "Physical access restrictions associated with changes to the system are documented.",
+        "Physical access restrictions associated with changes to the system are approved.",
+        "Physical access restrictions associated with changes to the system are enforced.",
+        "Logical access restrictions associated with changes to the system are defined.",
+        "Logical access restrictions associated with changes to the system are documented.",
+        "Logical access restrictions associated with changes to the system are approved.",
+        "Logical access restrictions associated with changes to the system are enforced."
+      ]
+    },
+    {
+      "id": "3.4.6",
+      "title": "Employ the principle of least functionality by configuring organizational systems to provide only essential capabilities",
+      "checklists": [
+        "Essential system capabilities are defined based on the principle of least functionality.",
+        "The system is configured to provide only the defined essential capabilities."
+      ]
+    },
+    {
+      "id": "3.4.7",
+      "title": "Restrict, disable, or prevent the use of nonessential programs, functions, ports, protocols, and services",
+      "checklists": [
+        "Essential programs are defined.",
+        "The use of nonessential programs is defined.",
+        "The use of nonessential programs is restricted, disabled, or prevented as defined.",
+        "Essential functions are defined.",
+        "The use of nonessential functions is defined.",
+        "The use of nonessential functions is restricted, disabled, or prevented as defined.",
+        "Essential ports are defined.",
+        "The use of nonessential ports is defined.",
+        "The use of nonessential ports is restricted, disabled, or prevented as defined.",
+        "Essential protocols are defined.",
+        "The use of nonessential protocols is defined.",
+        "The use of nonessential protocols is restricted, disabled, or prevented as defined.",
+        "Essential services are defined.",
+        "The use of nonessential services is defined.",
+        "The use of nonessential services is restricted, disabled, or prevented as defined."
+      ]
+    },
+    {
+      "id": "3.4.8",
+      "title": "Apply deny-by-exception (blacklisting) policy to prevent the use of unauthorized software or deny-all, permit-by-exception (whitelisting) policy to allow the execution of authorized software.",
+      "checklists": [
+        "A policy specifying whether whitelisting or blacklisting is to be implemented is specified.",
+        "The software allowed to execute under whitelisting or denied use under blacklisting is specified.",
+        "Whitelisting to allow the execution of authorized software or blacklisting to prevent the use of unauthorized software is implemented as specified."
+      ]
+    },
+    {
+      "id": "3.4.9",
+      "title": "Control and monitor user-installed software",
+      "checklists": [
+        "A policy for controlling the installation of software by users is established.",
+        "Installation of software by users is controlled based on the established policy.",
+        "Installation of software by users is monitored."
+      ]
+    },
+    {
+      "id": "3.5.1",
+      "title": "Identify system users, processes acting on behalf of users, and devices",
+      "checklists": [
+        "System users are identified.",
+        "Processes acting on behalf of users are identified.",
+        "Devices accessing the system are identified."
+      ]
+    },
+    {
+      "id": "3.5.2",
+      "title": "Authenticate (or verify) the identities of users, processes, or devices, as a prerequisite to allowing access to organizational systems",
+      "checklists": [
+        "The identity of each user is authenticated or verified as a prerequisite to system access.",
+        "The identity of each process acting on behalf of a user is authenticated or verified as a prerequisite to system access.",
+        "The identity of each device accessing or connecting to the system is authenticated or verified as a prerequisite to system access."
+      ]
+    },
+    {
+      "id": "3.5.3",
+      "title": "Use multifactor authentication for local and network access to privileged accounts and for network access to non-privileged accounts",
+      "checklists": [
+        "Privileged accounts are identified.",
+        "Multifactor authentication is implemented for local access to privileged accounts.",
+        "Multifactor authentication is implemented for network access to privileged accounts.",
+        "Multifactor authentication is implemented for network access to non-privileged accounts."
+      ]
+    },
+    {
+      "id": "3.5.4",
+      "title": "Employ replay-resistant authentication mechanisms for network access to privileged and non-privileged accounts",
+      "checklists": [
+        "Determine if replay-resistant authentication mechanisms are implemented for network account access to privileged and non-privileged accounts."
+      ]
+    },
+    {
+      "id": "3.5.5",
+      "title": "Prevent reuse of identifiers for a defined period",
+      "checklists": [
+        "A period within which identifiers cannot be reused is defined.",
+        "Reuse of identifiers is prevented within the defined period."
+      ]
+    },
+    {
+      "id": "3.5.6",
+      "title": "Disable identifiers after a defined period of inactivity",
+      "checklists": [
+        "A period of inactivity after which an identifier is disabled is defined.",
+        "Identifiers are disabled after the defined period of inactivity."
+      ]
+    },
+    {
+      "id": "3.5.7",
+      "title": "Enforce a minimum password complexity and change of characters when new passwords are created",
+      "checklists": [
+        "Password complexity requirements are defined.",
+        "Password change of character requirements are defined.",
+        "Minimum password complexity requirements as defined are enforced when new passwords are created.",
+        "Minimum password change of character requirements as defined are enforced when new passwords are created."
+      ]
+    },
+    {
+      "id": "3.5.8",
+      "title": "Prohibit password reuse for a specified number of generations",
+      "checklists": [
+        "The number of generations during which a password cannot be reused is specified.",
+        "Reuse of passwords is prohibited during the specified number of generations."
+      ]
+    },
+    {
+      "id": "3.5.9",
+      "title": "Allow temporary password use for system logons with an immediate change to a permanent password.",
+      "checklists": [
+        "Determine if an immediate change to a permanent password is required when a temporary password is used for system logon."
+      ]
+    },
+    {
+      "id": "3.5.10",
+      "title": "Store and transmit only cryptographically-protected passwords. ",
+      "checklists": [
+        "Passwords are cryptographically protected in storage.",
+        "Passwords are cryptographically protected in transit."
+      ]
+    },
+    {
+      "id": "3.5.11",
+      "title": "Obscure feedback of authentication information.",
+      "checklists": [
+        "Determine if authentication information is obscured during the authentication process."
+      ]
+    },
+    {
+      "id": "3.6.1",
+      "title": "Establish an operational incident-handling capability for organizational systems that includes preparation, detection, analysis, containment, recovery, and user response activities. ",
+      "checklists": [
+        "An operational incident-handling capability is established.",
+        "The operational incident-handling capability includes preparation.",
+        "The operational incident-handling capability includes detection.",
+        "The operational incident-handling capability includes analysis.",
+        "The operational incident-handling capability includes containment.",
+        "The operational incident-handling capability includes recovery.",
+        "The operational incident-handling capability includes user response activities."
+      ]
+    },
+    {
+      "id": "3.6.2",
+      "title": "Track, document, and report incidents to designated officials and/or authorities both internal and external to the organization. ",
+      "checklists": [
+        "Incidents are tracked.",
+        "Incidents are documented.",
+        "Authorities to whom incidents are to be reported are identified.",
+        "Organizational officials to whom incidents are to be reported are identified.",
+        "Identified authorities are notified of incidents.",
+        "Identified organizational officials are notified of incidents."
+      ]
+    },
+    {
+      "id": "3.6.3",
+      "title": "Test the organizational incident response capability.",
+      "checklists": ["Determine if the incident response capability is tested."]
+    },
+    {
+      "id": "3.7.1",
+      "title": "Perform maintenance on organizational systems.",
+      "checklists": ["Determine if system maintenance is performed."]
+    },
+    {
+      "id": "3.7.2",
+      "title": "Provide controls on the tools, techniques, mechanisms, and personnel used to conduct system maintenance.",
+      "checklists": [
+        "Tools used to conduct system maintenance are controlled.",
+        "Techniques used to conduct system maintenance are controlled.",
+        "Mechanisms used to conduct system maintenance are controlled.",
+        "Personnel used to conduct system maintenance are controlled."
+      ]
+    },
+    {
+      "id": "3.7.3",
+      "title": "Ensure equipment removed for off-site maintenance is sanitized of any CUI.",
+      "checklists": [
+        "Determine if equipment to be removed from organizational spaces for off-site maintenance is sanitized of any CUI."
+      ]
+    },
+    {
+      "id": "3.7.4",
+      "title": "Check media containing diagnostic and test programs for malicious code before the media are used in organizational systems.",
+      "checklists": [
+        "Determine if media containing diagnostic and test programs are checked for malicious code before being used in organizational systems that process, store, or transmit CUI."
+      ]
+    },
+    {
+      "id": "3.7.5",
+      "title": "Require multifactor authentication to establish nonlocal maintenance sessions via external network connections and terminate such connections when nonlocal maintenance is complete. ",
+      "checklists": [
+        "Multifactor authentication is used to establish nonlocal maintenance sessions via external network connections.",
+        "Nonlocal maintenance sessions established via external network connections are terminated when nonlocal maintenance is complete."
+      ]
+    },
+    {
+      "id": "3.7.6",
+      "title": "Supervise the maintenance activities of maintenance personnel without required access authorization.",
+      "checklists": [
+        "Determine if maintenance personnel without required access authorization are supervised during maintenance activities."
+      ]
+    },
+    {
+      "id": "3.8.1",
+      "title": "Protect (i.e., physically control and securely store) system media containing CUI, both paper and digital. ",
+      "checklists": [
+        "Paper media containing CUI is physically controlled.",
+        "Digital media containing CUI is physically controlled.",
+        "Paper media containing CUI is securely stored.",
+        "Digital media containing CUI is securely stored."
+      ]
+    },
+    {
+      "id": "3.8.2",
+      "title": "Limit access to CUI on system media to authorized users.",
+      "checklists": [
+        "Determine if access to CUI on system media is limited to authorized users."
+      ]
+    },
+    {
+      "id": "3.8.3",
+      "title": "Sanitize or destroy system media containing CUI before disposal or release for reuse.",
+      "checklists": [
+        "System media containing CUI is sanitized or destroyed before disposal.",
+        "System media containing CUI is sanitized before it is released for reuse."
+      ]
+    },
+    {
+      "id": "3.8.4",
+      "title": "Mark media with necessary CUI markings and distribution limitations. ",
+      "checklists": [
+        "Media containing CUI is marked with applicable CUI markings.",
+        "Media containing CUI is marked with distribution limitations."
+      ]
+    },
+    {
+      "id": "3.8.5",
+      "title": "Control access to media containing CUI and maintain accountability for media during transport outside of controlled areas. ",
+      "checklists": [
+        "Access to media containing CUI is controlled.",
+        "Accountability for media containing CUI is maintained during transport outside of controlled areas."
+      ]
+    },
+    {
+      "id": "3.8.6",
+      "title": "Implement cryptographic mechanisms to protect the confidentiality of CUI stored on digital media during transport unless otherwise protected by alternative physical safeguards.",
+      "checklists": [
+        "Determine if the confidentiality of CUI stored on digital media is protected during transport using cryptographic mechanisms or alternative physical safeguards."
+      ]
+    },
+    {
+      "id": "3.8.7",
+      "title": "Control the use of removable media on system components.",
+      "checklists": [
+        "Determine if the use of removable media on system components is controlled."
+      ]
+    },
+    {
+      "id": "3.8.8",
+      "title": "Prohibit the use of portable storage devices when such devices have no identifiable owner.",
+      "checklists": [
+        "Determine if the use of portable storage devices is prohibited when such devices have no identifiable owner."
+      ]
+    },
+    {
+      "id": "3.8.9",
+      "title": "Protect the confidentiality of backup CUI at storage locations.",
+      "checklists": [
+        "Determine if the confidentiality of backup CUI is protected at storage locations."
+      ]
+    },
+    {
+      "id": "3.9.1",
+      "title": "Screen individuals prior to authorizing access to organizational systems containing CUI.",
+      "checklists": [
+        "Determine if individuals are screened prior to authorizing access to organizational systems containing CUI."
+      ]
+    },
+    {
+      "id": "3.9.2",
+      "title": "Ensure that organizational systems containing CUI are protected during and after personnel actions such as terminations and transfers. ",
+      "checklists": [
+        "A policy and/or process for terminating system access and any credentials coincident with personnel actions is established.",
+        "System access and credentials are terminated consistent with personnel actions such as termination or transfer.",
+        "The system is protected during and after personnel transfer actions."
+      ]
+    },
+    {
+      "id": "3.10.1",
+      "title": "Limit physical access to organizational systems, equipment, and the respective operating environments to authorized individuals. ",
+      "checklists": [
+        "Authorized individuals allowed physical access are identified.",
+        "Physical access to organizational systems is limited to authorized individuals.",
+        "Physical access to equipment is limited to authorized individuals.",
+        "Physical access to operating environments is limited to authorized individuals."
+      ]
+    },
+    {
+      "id": "3.10.2",
+      "title": "Protect and monitor the physical facility and support infrastructure for organizational systems.",
+      "checklists": [
+        "The physical facility where organizational systems reside is protected.",
+        "The support infrastructure for organizational systems is protected.",
+        "The physical facility where organizational systems reside is monitored.",
+        "The support infrastructure for organizational systems is monitored."
+      ]
+    },
+    {
+      "id": "3.10.3",
+      "title": "Escort visitors and monitor visitor activity. ",
+      "checklists": ["Visitors are escorted.", "Visitor activity is monitored."]
+    },
+    {
+      "id": "3.10.4",
+      "title": "Maintain audit logs of physical access.",
+      "checklists": [
+        "Determine if audit logs of physical access are maintained."
+      ]
+    },
+    {
+      "id": "3.10.5",
+      "title": "Control and manage physical access devices. ",
+      "checklists": [
+        "Physical access devices are identified.",
+        "Physical access devices are controlled.",
+        "Physical access devices are managed."
+      ]
+    },
+    {
+      "id": "3.10.6",
+      "title": "Enforce safeguarding measures for CUI at alternate work sites. ",
+      "checklists": [
+        "Safeguarding measures for CUI are defined for alternate work sites.",
+        "Safeguarding measures for CUI are enforced for alternate work sites."
+      ]
+    },
+    {
+      "id": "3.11.1",
+      "title": "Periodically assess the risk to organizational operations (including mission, functions, image, or reputation), organizational assets, and individuals, resulting from the operation of organizational systems and the associated processing, storage, or transmission of CUI. ",
+      "checklists": [
+        "The frequency to assess risk to organizational operations, organizational assets, and individuals is defined.",
+        "Risk to organizational operations, organizational assets, and individuals resulting from the operation of an organizational system that processes, stores, or transmits CUI is assessed with the defined frequency."
+      ]
+    },
+    {
+      "id": "3.11.2",
+      "title": "Scan for vulnerabilities in organizational systems and applications periodically and when new vulnerabilities affecting those systems and applications are identified.",
+      "checklists": [
+        "The frequency to scan for vulnerabilities in organizational systems and applications is defined.",
+        "Vulnerability scans are performed on organizational systems with the defined frequency.",
+        "Vulnerability scans are performed on applications with the defined frequency.",
+        "Vulnerability scans are performed on organizational systems when new vulnerabilities are identified.",
+        "Vulnerability scans are performed on applications when new vulnerabilities are identified."
+      ]
+    },
+    {
+      "id": "3.11.3",
+      "title": "Remediate vulnerabilities in accordance with risk assessments. ",
+      "checklists": [
+        "Vulnerabilities are identified.",
+        "Vulnerabilities are remediated in accordance with risk assessments."
+      ]
+    },
+    {
+      "id": "3.12.1",
+      "title": "Periodically assess the security controls in organizational systems to determine if the controls are effective in their application. ",
+      "checklists": [
+        "The frequency of security control assessments is defined.",
+        "Security controls are assessed with the defined frequency to determine if the controls are effective in their application."
+      ]
+    },
+    {
+      "id": "3.12.2",
+      "title": "Develop and implement plans of action designed to correct deficiencies and reduce or eliminate vulnerabilities in organizational systems. ",
+      "checklists": [
+        "Deficiencies and vulnerabilities to be addressed by the plan of action are identified.",
+        "A plan of action is developed to correct identified deficiencies and reduce or eliminate identified vulnerabilities.",
+        "The plan of action is implemented to correct identified deficiencies and reduce or eliminate identified vulnerabilities."
+      ]
+    },
+    {
+      "id": "3.12.3",
+      "title": "Monitor security controls on an ongoing basis to ensure the continued effectiveness of the controls.",
+      "checklists": [
+        "Determine if security controls are monitored on an ongoing basis to ensure the continued effectiveness of those controls."
+      ]
+    },
+    {
+      "id": "3.12.4",
+      "title": "Develop, document, and periodically update system security plans that describe system boundaries, system environments of operation, how security requirements are implemented, and the relationships with or connections to other systems.",
+      "checklists": [
+        "A system security plan is developed.",
+        "The system boundary is described and documented in the system security plan.",
+        "The system environment of operation is described and documented in the system security plan.",
+        "The security requirements identified and approved by the designated authority as non-applicable are identified.",
+        "The method of security requirement implementation is described and documented in the system security plan.",
+        "The relationship with or connection to other systems is described and documented in the system security plan.",
+        "The frequency to update the system security plan is defined.",
+        "System security plan is updated with the defined frequency."
+      ]
+    },
+    {
+      "id": "3.13.1",
+      "title": "3.13.1 Monitor, control, and protect communications (i.e., information transmitted or received by organizational systems) at the external boundaries and key internal boundaries of organizational systems.",
+      "checklists": [
+        "The external system boundary is defined.",
+        "Key internal system boundaries are defined.",
+        "Communications are monitored at the external system boundary.",
+        "Communications are monitored at key internal boundaries.",
+        "Communications are controlled at the external system boundary.",
+        "Communications are controlled at key internal boundaries.",
+        "Communications are protected at the external system boundary.",
+        "Communications are protected at key internal boundaries."
+      ]
+    },
+    {
+      "id": "3.13.2",
+      "title": "Employ architectural designs, software development techniques, and systems engineering principles that promote effective information security within organizational systems.",
+      "checklists": [
+        "Architectural designs that promote effective information security are identified.",
+        "Software development techniques that promote effective information security are identified.",
+        "Systems engineering principles that promote effective information security are identified.",
+        "Identified architectural designs that promote effective information security are employed.",
+        "Identified software development techniques that promote effective information security are employed.",
+        "Identified systems engineering principles that promote effective information security are employed."
+      ]
+    },
+    {
+      "id": "3.13.3",
+      "title": "Separate user functionality from system management functionality. ",
+      "checklists": [
+        "User functionality is identified.",
+        "System management functionality is identified.",
+        "User functionality is separated from system management functionality."
+      ]
+    },
+    {
+      "id": "3.13.4",
+      "title": "Prevent unauthorized and unintended information transfer via shared system resources.",
+      "checklists": [
+        "Determine if unauthorized and unintended information transfer via shared system resources is prevented."
+      ]
+    },
+    {
+      "id": "3.13.5",
+      "title": "Implement subnetworks for publicly accessible system components that are physically or logically separated from internal networks. ",
+      "checklists": [
+        "Publicly accessible system components are identified.",
+        "Subnetworks for publicly accessible system components are physically or logically separated from internal networks."
+      ]
+    },
+    {
+      "id": "3.13.6",
+      "title": "Deny network communications traffic by default and allow network communications traffic by exception (i.e., deny all, permit by exception). ",
+      "checklists": [
+        "Network communications traffic is denied by default.",
+        "Network communications traffic is allowed by exception."
+      ]
+    },
+    {
+      "id": "3.13.7",
+      "title": "Prevent remote devices from simultaneously establishing non-remote connections with organizational systems and communicating via some other connection to resources in external networks (i.e., split tunneling).",
+      "checklists": [
+        "Determine if remote devices are prevented from simultaneously establishing non-remote connections with the system and communicating via some other connection to resources in external networks (i.e., split tunneling)."
+      ]
+    },
+    {
+      "id": "3.13.8",
+      "title": "Implement cryptographic mechanisms to prevent unauthorized disclosure of CUI during transmission unless otherwise protected by alternative physical safeguards. ",
+      "checklists": [
+        "Cryptographic mechanisms intended to prevent unauthorized disclosure of CUI are identified.",
+        "Alternative physical safeguards intended to prevent unauthorized disclosure of CUI are identified.",
+        "Either cryptographic mechanisms or alternative physical safeguards are implemented to prevent unauthorized disclosure of CUI during transmission."
+      ]
+    },
+    {
+      "id": "3.13.9",
+      "title": "3.13.9 Terminate network connections associated with communications sessions at the end of the sessions or after a defined period of inactivity. ",
+      "checklists": [
+        "A period of inactivity to terminate network connections associated with communications sessions is defined.",
+        "Network connections associated with communications sessions are terminated at the end of the sessions.",
+        "Network connections associated with communications sessions are terminated after the defined period of inactivity."
+      ]
+    },
+    {
+      "id": "3.13.10",
+      "title": "Establish and manage cryptographic keys for cryptography employed in organizational systems. ",
+      "checklists": [
+        "Cryptographic keys are established whenever cryptography is employed.",
+        "Cryptographic keys are managed whenever cryptography is employed."
+      ]
+    },
+    {
+      "id": "3.13.11",
+      "title": "Employ FIPS-validated cryptography when used to protect the confidentiality of CUI.",
+      "checklists": [
+        "Determine if FIPS-validated cryptography is employed to protect the confidentiality of CUI."
+      ]
+    },
+    {
+      "id": "3.13.12",
+      "title": "Prohibit remote activation of collaborative computing devices and provide indication of devices in use to users present at the device. ",
+      "checklists": [
+        "Collaborative computing devices are identified.",
+        "Collaborative computing devices provide indication to users of devices in use.",
+        "Remote activation of collaborative computing devices is prohibited."
+      ]
+    },
+    {
+      "id": "3.13.13",
+      "title": "Control and monitor the use of mobile code. ",
+      "checklists": [
+        "Use of mobile code is controlled.",
+        "Use of mobile code is monitored."
+      ]
+    },
+    {
+      "id": "3.13.14",
+      "title": "Control and monitor the use of Voice over Internet Protocol (VoIP) technologies.",
+      "checklists": [
+        "Use of Voice over Internet Protocol (VoIP) technologies is controlled.",
+        "Use of Voice over Internet Protocol (VoIP) technologies is monitored."
+      ]
+    },
+    {
+      "id": "3.13.15",
+      "title": "Protect the authenticity of communications sessions.",
+      "checklists": [
+        "Determine if the authenticity of communications sessions is protected."
+      ]
+    },
+    {
+      "id": "3.13.16",
+      "title": "Protect the confidentiality of CUI at rest.",
+      "checklists": [
+        "Determine if the confidentiality of CUI at rest is protected."
+      ]
+    },
+    {
+      "id": "3.14.1",
+      "title": "Identify, report, and correct system flaws in a timely manner. ",
+      "checklists": [
+        "The time within which to identify system flaws is specified.",
+        "System flaws are identified within the specified time frame.",
+        "The time within which to report system flaws is specified.",
+        "System flaws are reported within the specified time frame.",
+        "The time within which to correct system flaws is specified.",
+        "System flaws are corrected within the specified time frame."
+      ]
+    },
+    {
+      "id": "3.14.2",
+      "title": "Provide protection from malicious code at designated locations within organizational systems.",
+      "checklists": [
+        "Designated locations for malicious code protection are identified.",
+        "Protection from malicious code at designated locations is provided."
+      ]
+    },
+    {
+      "id": "3.14.3",
+      "title": "Monitor system security alerts and advisories and take action in response.",
+      "checklists": [
+        "Response actions to system security alerts and advisories are identified.",
+        "System security alerts and advisories are monitored.",
+        "Actions in response to system security alerts and advisories are taken."
+      ]
+    },
+    {
+      "id": "3.14.4",
+      "title": "Update malicious code protection mechanisms when new releases are available.",
+      "checklists": [
+        "Determine if malicious code protection mechanisms are updated when new releases are available."
+      ]
+    },
+    {
+      "id": "3.14.5",
+      "title": "Perform periodic scans of organizational systems and real-time scans of files from external sources as files are downloaded, opened, or executed.",
+      "checklists": [
+        "The frequency for malicious code scans is defined.",
+        "Malicious code scans are performed with the defined frequency.",
+        "Real-time malicious code scans of files from external sources as files are downloaded, opened, or executed are performed."
+      ]
+    },
+    {
+      "id": "3.14.6",
+      "title": "Monitor organizational systems, including inbound and outbound communications traffic, to detect attacks and indicators of potential attacks. ",
+      "checklists": [
+        "The system is monitored to detect attacks and indicators of potential attacks.",
+        "Inbound communications traffic is monitored to detect attacks and indicators of potential attacks.",
+        "Outbound communications traffic is monitored to detect attacks and indicators of potential attacks."
+      ]
+    },
+    {
+      "id": "3.14.7",
+      "title": "Identify unauthorized use of organizational systems. ",
+      "checklists": [
+        "Authorized use of the system is defined.",
+        "Unauthorized use of the system is identified."
+      ]
+    }
+  ]
+}

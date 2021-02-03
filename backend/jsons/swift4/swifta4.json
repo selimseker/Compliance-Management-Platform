@@ -1,0 +1,430 @@
+{
+  "standard_name": "SWIFT-A4",
+
+  "domains": [
+    {
+      "id": "1",
+      "title": "Restrict Internet Access & Protect Critical Systems from General IT Environment",
+      "control_ids": ["1.2", "1.3", "1.4"]
+    },
+    {
+      "id": "2",
+      "title": "Reduce Attack Surface and Vulnerabilities",
+      "control_ids": [
+        "2.2",
+        "2.3",
+        "2.4A",
+        "2.5A",
+        "2.6",
+        "2.7",
+        "2.8A",
+        "2.9A",
+        "2.11A"
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Physically Secure the Environment",
+      "control_ids": ["3.1"]
+    },
+    {
+      "id": "4",
+      "title": "Prevent Compromise of Credentials",
+      "control_ids": ["4.1", "4.2"]
+    },
+    {
+      "id": "5",
+      "title": "Manage Identities and Segregate Privileges",
+      "control_ids": ["5.1", "5.2", "5.3A", "5.4"]
+    },
+    {
+      "id": "6",
+      "title": "Detect Anomalous Activity to Systems or Transaction Records",
+      "control_ids": ["6.1", "6.4", "6.5A"]
+    },
+    {
+      "id": "7",
+      "title": "Plan for Incident Response and Information Sharing",
+      "control_ids": ["7.1", "7.2", "7.3A", "7.4A"]
+    }
+  ],
+
+  "controls": [
+    {
+      "id": "1.2",
+      "title": "Operating System Privileged Account Control",
+      "checklists": [
+        "AD Domain / Security Groups",
+        "Password policies",
+        "Account level restrictions on virtualization platform"
+      ]
+    },
+    {
+      "id": "1.3",
+      "title": "Virtualisation Platform Protection",
+      "checklists": [
+        "Physical access restrictions",
+        "Platform level access restrictions"
+      ]
+    },
+    {
+      "id": "1.4",
+      "title": "Restriction of Internet Access",
+      "checklists": [
+        "General purpose internet restrictions within secure zone",
+        "Required internet access limitations",
+        "Jump server access restrictions"
+      ]
+    },
+
+    {
+      "id": "2.2",
+      "title": "Securtiy Updates",
+      "checklists": [
+        "The frequency to update the system security plan is defined.",
+        "System security plan is updated with the defined frequency."
+      ]
+    },
+    {
+      "id": "2.3",
+      "title": "System Hardening",
+      "checklists": [
+        "Change default passwords",
+        "Disable or remove unnecessary user accounts,",
+        "Disable or restrict unnecessary services, ports, and protocols,",
+        "Remove unnecessary software,",
+        "Restrict physical ports (for example, USB) as appropriate",
+        "Set auto-lock options",
+        "Adjust any default vulnerable configuration",
+        "The frequency of security setting check is defined",
+        "Security settings checks are controlled within the defined frequency"
+      ]
+    },
+    {
+      "id": "2.4A",
+      "title": "Back Office Data Flow Security",
+      "checklists": [
+        "Secured connection between backoffice and middleware server",
+        "Use of secure protocols",
+        "Have a plan to implement/activate secure mechanisms for identified flows"
+      ]
+    },
+    {
+      "id": "2.5A",
+      "title": "External Transmission Data Protection",
+      "checklists": [
+        "Protected from unauthorised access when stored outside of the SWIFT secure zone (Implemented)",
+        "Encrypted when in transit between secure zones (for example, between data centres)",
+        "Encryption mechanisms comply with applicable laws and regulations"
+      ]
+    },
+    {
+      "id": "2.6",
+      "title": " Operator Session Confidentiality and Integrity",
+      "checklists": [
+        "All interactive sessions are protected by a cryptographic protocol (best practices)",
+        "Protocols use a current, commonly accepted cryptographic algorithm",
+        " inactivity lockout feature that limits the session to the minimal timeframe necessary to perform business-as-usual duties is it implemented (application)",
+        "where inactivity lock-out is implemented (at the operating system-level of the application, or on the jump server))"
+      ]
+    },
+    {
+      "id": "2.7",
+      "title": "Vulnerability Scanning",
+      "checklists": [
+        "Vulnerability scanning is performed at least annually as well as after any significant change to the environment",
+        "Beyond vulnerability identification through scanning, all penetration tests or effective vulnerability tests on or through SWIFT-related services and products are consistent with the SWIFT Customer Testing Policy.",
+        "The outcome of the vulnerability scanning is it documented (with restricted access) and analysed for appropriate action and remediation.",
+        "Real-time scanning is it implemented."
+      ]
+    },
+    {
+      "id": "2.8A",
+      "title": "Critical Activity Outsourcings",
+      "checklists": [
+        "Conformance with the security controls of the outsourcing framework is it implemented",
+        "The third party must be registered to the Shared Infrastructure Programme or the Alliance Lite2 for Business Applications programme.",
+        "Service Level Agreements (SLA) and a Non-Disclosure Agreement (NDA) are established with any third party to whom critical activities have been outsourced.",
+        "A risk assessment of the third party is conducted at the start of the engagement, and reviewed on a regular basis thereafter.  impl"
+      ]
+    },
+    {
+      "id": "2.9A",
+      "title": "Transaction Business Controls",
+      "checklists": [
+        "Controls that detect, prevent, or additionally validate the flow of transactions against expected bounds of normal business (payment controls service). (Implemented?)",
+        "SWIFT transaction submission and approval is restricted outside of normal business.",
+        "Have a process in place to issue and check confirmation messages",
+        "Reconciliation of the entity's accounting records with end-of-day statement messages",
+        "Reconciliation is performed daily between the messages that are sent to/from the back office and to/from the SWIFT Network",
+        "Session numbers within the messaging interface are tracked to ensure that the sequential session numbering is intact with no unexpected gaps",
+        "Limit active SWIFTNet FIN sessions to business hours",
+        "In cases of 24-hour centralised SWIFT processing, restrict or monitor transactions as appropriate to support business as usual",
+        "Monitor uncharacteristic transactions (for example, exceptionally high amounts or cumulative amounts, unusual beneficiaries, senders or currencies)",
+        "Alternatively or in addition, independent reconciliation is undertaken with users' transaction data securely obtained from a secondary source (either internal or external such as SWIFT daily validation reports) or by verifying, the transaction is genuine with the emitter and/or the recipient.",
+        "Application and operating system accounts are restricted from log-in attempts that occur outside of expected role-specific operational hours."
+      ]
+    },
+
+    {
+      "id": "2.11A",
+      "title": "RMA Business Controls",
+      "checklists": [
+        "Appropriate know-your-customer principles and due diligence is performed during the creation and maintenance of Relationship Management Application (RMA) relationships.",
+        "RMA relationships are reviewed at least annually to ensure that obsolete (unused, dormant or unwanted) relationships are analysed and removed/revoked in a timelymanner."
+      ]
+    },
+    {
+      "id": "3.1",
+      "title": "Physical Security",
+      "checklists": [
+        "Sensitive removable equipment is supervised or securely stored when not inuse.",
+        "Sensitive removable equipment required for normal continuous operations are hosted in a data centre or,  at a minimum, in a locked room. ",
+        "Back-up media is physically secured.",
+        "Operator PCs are located in a secured workplace environment where access is controlled and granted only to employees and other authorised workers and visitors.",
+        "Printers used for SWIFT transactions are located in a secured workplace environment and their access is restricted.",
+        "USB and other external access points on operator PCs are disabled to the maximum extent possible, while still supporting operations",
+        "Physical security of the expected teleworking environment",
+        "Rules for personal equipment used for SWIFT business purposes",
+        "Security during use in public environments",
+        "Security during public and private transport",
+        "Equipment storage",
+        "Unauthorised access to equipment",
+        "Remote access requirements (recommended VPN with multi-factor authentication)",
+        "Protection of mobile devices used for authentication, such as OTP (recommend enabling password and auto-lock features)",
+        "Compensating controls",
+        "Reporting of security incidents",
+        "Servers are hosted in a data centre or, at a minimum, in a locked room with limited and controlled access ",
+        "The server environment has video surveillance with movement detection and recording equipment.",
+        "No physical reference to SWIFT on servers",
+        "External ports on servers are disabled to the maximum extent possible while still supporting operations.",
+        "Physical access to sensitive equipment areas (for example, data centre, secured storage) is logged.",
+        "Physical access logs are available for audit and investigations, and are retained for a minimum of 12 months and in compliance with applicable laws and regulations.",
+        "Physical access is promptly revoked (or modified) when an employee changes roles or leaves the organisation.",
+        "Physical access control lists are reviewed at leastannually."
+      ]
+    },
+    {
+      "id": "4.1",
+      "title": "Password Policy",
+      "checklists": [
+        "Password expiration",
+        "Password length, composition, complexity, and other restrictions",
+        "Password reuse",
+        "Lockout after failed authentication attempts, and remedy",
+        "The password policy is developed in consideration of known password-based vulnerabilities in the computing environment.",
+        "The established password policy is enforced through technical means wherepossible.",
+        "Effectiveness of the password policy is reviewed regularly (recommended annually).",
+        "System settings related to password management and storage are aligned to industry and vendor best practices",
+        "Passwords used for secure zone systems are not stored in authentication systems outside of the secure zone (for example, an enterprise Active Directory)."
+      ]
+    },
+    {
+      "id": "4.2",
+      "title": "Multi-factor Authentication",
+      "checklists": [
+        "When based on a knowledge factor (typically a password) combined with a possession factor (a mobile device), the device used for the second factor must not be the same as the device used to enter the first factor. ",
+        "Multi-factor authentication is implemented at least on one authentication stage/step faced by the end user when accessing a SWIFT application",
+        "For operating system administrators Multi-factor authentication is implemented at the secure zone boundary (jump server)",
+        "For operating system administrators Multi-factor authentication is implemented at  the dedicated operator PC log-in (within the secure zone)",
+        "For end users in descending order of security robustness Multi-factor authentication is implemented on the individual SWIFT applications (on the browser-based GUI, on the messaging interface, or on the communication interface)",
+        "For end users in descending order of security robustness Multi-factor authentication is implemented at the secure zone boundary (jump server)",
+        "For end users in descending order of security robustness Multi-factor authentication is implemented at the dedicated operator PC log-in (i.e. within the secure zone).",
+        "Multi-factor authentication is implemented for remote user administrative access, generally for VPN authentication.",
+        "If feasible, the authentication system supporting the multi-factor solution is located within the secure zone.",
+        "The authentication factors presented are individually assigned and support individual accountability of access to services, operating system, and applications.",
+        "If single sign-on (for example, SAML) is implemented, then a second factor is still required at the single sign-on, or at a later stage.",
+        "All SWIFT and SWIFT-certified third party vendor messaging and communication interfaces support or embed multi-factor authentication ?"
+      ]
+    },
+    {
+      "id": "5.1",
+      "title": "Logical Access Control",
+      "checklists": [
+        "Only operators (end users and administrators) who have a continuing requirement to access the secure zone are permitted to have accounts within the secure zone.",
+        "Privileges are only assigned to an operator with a validated need-to-know. Access to other system functions is disabled.",
+        "The system set-up ensures that user and administrator privileges are controlled in a way that allows all privileges to be tailored to individual needs.",
+        "Accounts are granted only the privileges that are required for normal, routine operation. Additional privileges are only granted on a temporary basis.",
+        "Vendor documented guidance on role separation is followed in vendor-specific documentation.",
+        "All Sensitive duties are separated",
+        "Transaction submission and transaction approval are not  represented by the same individual",
+        "Application Administrator and security officer roles are not  represented by the same individual",
+        "Network and operating system administrators are not  represented by the same individual",
+        "Sensitive permissions are separated to prevent by-passing the 4-Eyes principle. At a minimum, this requirement applies to access control and security configuration operations on the following components: Messaging and Communication Interface, HSMs, SWIFTNet Online OperationsManager, and Secure Channel.",
+        "Privileges are promptly revoked when an employee changes roles or leaves the organisation.",
+        "Accounts are reviewed at least annually (ideally more frequently) and adjusted as required to enforce access security principles.",
+        "An emergency procedure to access privileged accounts is documented for use when authorised persons are unavailable",
+        "Any operational use of the procedure is logged",
+        "Access to the emergency privileged accounts is controlled. The usage is logged and the password is changed after emergency use. "
+      ]
+    },
+    {
+      "id": "5.2",
+      "title": "Token Management",
+      "checklists": [
+        "A controlled process is used for the assignment and distribution of connected hardware tokens used for SWIFT operations",
+        "Token assignment is reviewed at least annually (ideally morefrequently)",
+        "Personally assigned hardware tokens are revoked when the individual no longer requires access and should possibly be recalled (for disposal or reassignment asappropriate)",
+        "A record is maintained of assigned hardware tokens ownership.",
+        "Hardware tokens are physically removed from the system and secured or supervised when not inuse",
+        "PED keys must be stored and only accessible by relevant staff (originals and copies should be stored in a safe and access is tracked)",
+        "Although the HSM PED keys are not personally assigned, usage should be controlled, tracked and monitored. In case a PIN is set on the PED keys and a person with access to these keys and PIN is leaving the company, the PIN codes should be changed",
+        "PC should be dedicated to remote PED activities and not a standard General Purpose Operator PC"
+      ]
+    },
+    {
+      "id": "5.3A",
+      "title": "Personnel Vetting Process",
+      "checklists": [
+        "All in-scope personnel are vetted at least every 5years",
+        "Identity verification",
+        "Confirmation of full details of qualifications",
+        "Confirmation of previous employment history",
+        "Details of any past or pending civil or criminal proceedings against theemployee",
+        "Validation of any involvement in external businesses that could result in a conflict of interest",
+        "Financial credit verification",
+        "Details of any pending civil or criminal proceedings against theemployee",
+        "Validation of any involvement in external businesses that could result in a conflict of interest"
+      ]
+    },
+    {
+      "id": "5.4",
+      "title": "Physical and Logical Password Storage",
+      "checklists": [
+        "Passwords written on physical media are protected via placement inside a sealed, tamper-evident security envelope",
+        "Passwords written on physical media are protected via Storage in a certified safe",
+        "Passwords written on physical media are protected via Logging of access to the storage location and which account's password was accessed",
+        "Passwords stored logically (digitally) are protected via encryption-at-rest or obfuscation (that is, no plain-text storage)",
+        "Passwords stored logically (digitally) are protected via authenticated access to the storage location, ideally with logging of access",
+        "Passwords are not recorded in user manuals or other operational material unless the password is stored in accordance with the guidance above",
+        "If emergency access is granted to an operator who under normal conditions would not have access, the password is changed immediately thereafter, and optionally also the combination to the storage safe.",
+        "Passwords are not hardcoded in scripts or other software code"
+      ]
+    },
+    {
+      "id": "6.1",
+      "title": "Malware Protection",
+      "checklists": [
+        "On-access anti-malware scanning is performed on all in-scope systems. On-demand full scanning is scheduled at least on a weekly basis for operator PCs (ideally on a daily basis). ",
+        "On-demand full scanning should be scheduled regularly for servers in line with business and operational constraints. ",
+        "The scope of the scanning include all files of the systems in scope.",
+        "Software (such as exe, libraries, scripts) and static data (such as configuration files) are  scanned on-access or at installation, and regularly thereafter, when complemented with a run time integrity mechanism allowing the identification of file changes or unexpected additions.",
+        "Data has been checked, validated and scanned at least once before being stored.",
+        "Anti-malware software from a reputable vendor is installed on all computing platforms and updated in line with the scanning frequency.",
+        "Systems that fail to update their profiles or run scheduled scans are detected and corrected.",
+        "Anti-malware software is tested for compatibility with theoperational environment.",
+        "Anti-malware software is configured in prevent mode if possible, after assessing foroperational impact.",
+        "Ensure that the transfer of any file content does not contain any kind of virus or other data that may create risks for the sender, for SWIFT, or for the receiver.",
+        "Ensure that the transfer of any file content does not contain any kind of virus or other data that may create risks for the sender, for SWIFT, or for the receiver.",
+        "Anti-malware systems use a combination of signature-based and heuristic-based capabilities.",
+        "Anti-malware solutions are implemented on non-Windows systems.",
+        "On-demand full scanning is scheduled at least on a weekly basis onservers."
+      ]
+    },
+
+    {
+      "id": "6.4",
+      "title": "Logging and Monitoring",
+      "checklists": [
+        "Implement a plan for logging of security-relevant activities and configure alarms for suspicious security events (when supported by the application).",
+        "Implement a plan for monitoring of security events in logs and for monitoring of other data, and establish a plan to treat reportedalarms.",
+        "All logging and monitoring activity complies with applicable laws and regulations, and employment contracts which supersede any implementation guidance",
+        "Logging capabilities are implemented to detect abnormal usage within the secure zone as well as any attempts to undermine the effectiveness of controls within thesecure zone.",
+        "Logs provide traceability of account usage to the appropriateindividual.",
+        "Messaging and communication interface application audit logs are retained for no less than 12 months and are sufficiently protected from an enterprise administrator-level compromise ",
+        "Operator PC, firewall and database audit logs are retained for no less than 31days.",
+        "Command line history for privileged operating system accounts on servers are recorded",
+        "Messaging and communication interface application and operating system logs which detail abnormal system behaviour are recorded",
+        "Firewall logs are recorded",
+        "Database logs (if available, and as a minimum in the case of hosted databasesolutions) are recorded",
+        "Procedures are in place to identify suspicious log-in activities into any privileged operating system or application accounts within the secure zone.",
+        "Monitoring processes are in place to review server, application and database monitoring data either daily via human reviews or via automated monitoring withalerting.",
+        "Monitoring processes are in place to review network monitoring data on a regularbasis.",
+        "Unusual or suspicious activity is reported for further investigation to the appropriate security team.",
+        "A centralised logging capability is implemented, minimising the number of log locations to be inspected. (Optional)",
+        "Session recording is implemented to record all activity conducted by privileged accounts on SWIFT secure zone servers. (Optional)"
+      ]
+    },
+
+    {
+      "id": "6.5A",
+      "title": "Intrusion Detection",
+      "checklists": [
+        "The intrusion detection system is configured to detect anomalous activity within the secure zone and at the boundary of the secure zone.",
+        "Inbound and outbound connections during non-business hours",
+        "Unexpected connections from the secure zone towards other systems within or outside of the perimeter of the SWIFT secure zone",
+        "Unexpected port or protocol use ",
+        "The system has a repeatable process to regularly update known intrusion signatures",
+        "If an intrusion is detected, an alarm is raised and, if the tool permits, a defence mechanism is triggered manually or automatically",
+        "Detected intrusions are managed via the standard incident responseprocess",
+        "Intrusion detection systems have the capability to inspect encryptedflows. (Optional)"
+      ]
+    },
+
+    {
+      "id": "7.1",
+      "title": "Cyber Incident Response Planning",
+      "checklists": [
+        "The user has developed and annually updates a cyber incident response plan. A formal backup and recovery plan exists for all critical business lines to support incident responseactivities.",
+        "The cyber incident response plan includes up-to-date contact details (internal and external) and escalation timers . The Cyber Security Incident - Recovery roadmap that provides a non-exhaustive list of steps or actions that a customer must follow in case of a cyber security breach",
+        "Internal security policies, laws, and regulations within a user's jurisdiction are adhered to and considered in the cyber incident response planning.",
+        "As a minimum, the plan is reviewed on an annual basis, and tested at least every two years ensuring safe recovery of critical business operations with minimised outage time after a cybersecurityincident.",
+        "Prompt notification to the appropriate internal stakeholders and leadership ",
+        "Prompt notification to the relevant external organisational stakeholders (typically, regulator(s), supervisor(s), law enforcement authorities)",
+        "Prompt notification to the SWIFT Customer Support Centre through the default channel and to comply with other obligations applicable to users in case of a security incident including the obligation to cooperate and provide forensic materials as may be required by SWIFT,",
+        "Promptly contain or isolate the impacted system to limit the exposure of the attack whilst still be able to identify rogue activities,",
+        "Skilled cybersecurity professionals are nvolved to identify and address the cyber incident. ",
+        "Review the correctness of the user current self-attestation(s) and, as applicable under the SWIFT Security Controls Policy, invalidate such attestation(s) and submit newattestation(s),",
+        "Conduct post-incident problem analysis to identify and remediate vulnerabilities",
+        "The incident are fully document ",
+        "The user has a documented plan for the timely sharing of threat information to intelligence-sharing organisations, law enforcement/local regulators (as required in each users' jurisdiction) and to SWIFT.",
+        "Information to be shared is first evaluated to ensure compliance with applicable laws and regulations and protects against the unintended sharing of sensitive data or data beyond the relevance of the incident.",
+        "The user has the capability to consume threat intelligence shared by SWIFT",
+        "The user has procedures in place to ensure the information is distributed to the correct contacts within theorganisation",
+        "The user has procedures in place to block traffic to/from IP-addresses/URLs mentioned in the IOCs.",
+        "User can integrate SWIFT ISAC TAXII API in its environment (Optional)"
+      ]
+    },
+
+    {
+      "id": "7.2",
+      "title": "Security Training and Awareness",
+      "checklists": [
+        "Staff complete annual security awareness and training",
+        "Training is delivered through the most appropriate channel, including computer-based training, classroom training, webinars.",
+        "Persons who have access to SWIFT applications, data, certificates, network, etc. have an adequate knowledge level and are aware of the pertinent cyber risks , best practice behaviours, and processes.",
+        "Social engineering testing, including fake phishing emails campaign, is performed to challenge and enhance their security awareness."
+      ]
+    },
+
+    {
+      "id": "7.3A",
+      "title": "Penetration Testing",
+      "checklists": [
+        "The organisation uses a risk-based approach to determine the preferred scope, method  and attack origin  for the test.",
+        "Penetration testing is performed at least every 2 years, and ideally as well after significant changes to the environment ",
+        "Penetration testing is carefully planned and performed to avoid potential availability or integrity impacts",
+        "Penetration testing is performed by expert staff independent from the team in charge of the SWIFT infrastructure (internal Red Team or external resources)",
+        "Network component and host penetration testing are performed in the service production environment or in pre-production environment replicating the live environment.",
+        "Sufficient safeguards are in place to minimise any operational impact from conducting thepenetration test",
+        "The outcome of the penetration testing is documented (with restricted access) and used as an input for the security update process.",
+        "Penetration testing is performed on SWIFT-specific applications while adhering to the SWIFT Customer Testing Policy. (This SWIFT-specific application penetration testing is performed in the testing environment to avoid potential availability or integrity impacts)."
+      ]
+    },
+
+    {
+      "id": "7.4A",
+      "title": " Scenario Risk Assessment",
+      "checklists": [
+        "Identify possible methods for adversaries to gain unauthorised access to local SWIFT infrastructure based upon observed adversary techniques or plausible adversary techniques inferred from adversaries' motivations and capabilities,",
+        "Analyse the effectiveness of existing prevention and detection controls to mitigate anticipated adversary techniques to gain unauthorised access to theenvironment",
+        "Analyse the probability and impact of significant and plausible attack vectors given existing controls",
+        "Analyse the effectiveness of existing response controls to limit impact of significant and plausible attack vectors given existing controls",
+        "Identify the need for additional preventive or detectivecontrols.",
+        "Assessment and planning activity is conducted at least annually, and updated via ongoing risk management activities, when significant technology changes occur, or when threat intelligence indicates relevant changes in an applicable adversary’s capabilities ormotivations.",
+        "Current threat intelligence and observed/likely attacks (vectors, techniques, actors, etc.) are used as the basis for viable scenarios.",
+        "Each asset class (end user devices, servers, network devices) is assessed against threats on a regular basis and when changes are introduced or when new threats are identified."
+      ]
+    }
+  ]
+}

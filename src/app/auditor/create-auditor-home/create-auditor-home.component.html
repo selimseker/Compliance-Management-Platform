@@ -1,0 +1,73 @@
+<div class="container d-flex h-100 align-items-center ">
+    <mat-card class="shadow w-100">
+        <form [formGroup]="form" (submit)="onSubmit()">
+            <h6>Personal Info</h6>
+            <div class="row d-flex">
+                <mat-form-field class="flex-fill m-3" appearance="legacy">
+                    <input matInput formControlName="first_name" name="first_name">
+                    <mat-label>First Name</mat-label>
+                </mat-form-field>
+
+                <mat-form-field class="flex-fill m-3" appearance="legacy">
+                    <input matInput formControlName="second_name" name="second_name">
+                    <mat-label>Second Name</mat-label>
+                </mat-form-field>
+            </div>
+
+            <div class="row d-flex">
+                <mat-form-field class="flex-fill m-3">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" name="email" placeholder="Ex. pat@example.com">
+
+                </mat-form-field>
+
+                <mat-form-field class="flex-fill m-3">
+                    <input matInput formControlName="phone_number" name="phone_number">
+                    <mat-label>Phone Number</mat-label>
+                </mat-form-field>
+
+
+            </div>
+
+            <div class="row d-flex">
+                <mat-form-field class="flex-fill m-3">
+                    <textarea matInput formControlName="bio" placeholder="Bio"></textarea>
+                </mat-form-field>
+
+
+            </div>
+            <h6>Auditor Info</h6>
+            <div class="row d-flex">
+                <mat-form-field class="flex-fill m-3" appearance="legacy">
+                    <mat-label>Standards</mat-label>
+                    <mat-select formControlName="standards" multiple>
+                        <mat-option *ngFor="let standard of standards" [value]="standard">{{standard}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="flex-fill m-3" appearance="legacy">
+                    <mat-label>Supervisor</mat-label>
+                    <mat-select formControlName="supervisor">
+                        <mat-option *ngFor="let supervisor of supervisors" [value]="supervisor">{{supervisor}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+
+
+
+            </div>
+
+
+
+
+
+            <div class="row">
+                <button mat-raised-button class="m-3" color="primary">Create</button>
+            </div>
+
+
+        </form>
+    </mat-card>
+
+
+</div>

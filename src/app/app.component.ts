@@ -1,10 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild} from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
+
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'complianceManegement';
+
+
+  sidebarState: string;
+  asdasd = 0;
+  constructor(){
+    this.sidebarState = "closed";
+  }
+
+
+  
+
+
+
 }

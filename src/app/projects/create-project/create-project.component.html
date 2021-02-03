@@ -1,0 +1,54 @@
+<div class="container d-flex h-100 align-items-center ">
+    <mat-card class="shadow w-100">
+        <form [formGroup]="form" (submit)="onSubmit()">
+            <h6>Personal Info</h6>
+            <div class="row d-flex">
+                <mat-form-field class="flex-fill m-3" appearance="legacy">
+                    <input matInput formControlName="project_title" name="project_title">
+                    <mat-label>Project Title</mat-label>
+                </mat-form-field>
+
+                <mat-form-field class="flex-fill m-3" appearance="legacy">
+                    <mat-label>Company</mat-label>
+                    <mat-select formControlName="company_id">
+                        <mat-option *ngFor="let comp of companies" [value]="comp._id">{{comp.name}}</mat-option>
+                    </mat-select>
+
+                </mat-form-field>
+            </div>
+
+            <h6>Auditor Info</h6>
+            <div class="row d-flex">
+                <mat-form-field class="flex-fill m-3" appearance="legacy">
+                    <mat-label>Standard</mat-label>
+                    <mat-select formControlName="standard">
+                        <mat-option *ngFor="let standard of standards" [value]="standard">{{standard}}</mat-option>
+                    </mat-select>
+
+                </mat-form-field>
+
+                <mat-form-field class="flex-fill m-3" appearance="legacy">
+                    <mat-label>Auditor</mat-label>
+                    <mat-select formControlName="auditor_id">
+                        <mat-option *ngFor="let adt of auditors" [value]="adt._id">{{adt.first_name+' '+adt.second_name}}</mat-option>
+                    </mat-select>
+
+                </mat-form-field>
+
+
+
+            </div>
+
+
+
+
+            <div class="row">
+                <button mat-raised-button class="m-3" color="primary">Create</button>
+            </div>
+
+
+        </form>
+    </mat-card>
+
+
+</div>

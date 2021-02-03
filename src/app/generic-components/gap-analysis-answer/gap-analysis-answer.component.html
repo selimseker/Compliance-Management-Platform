@@ -1,0 +1,31 @@
+<ng-container>
+    <mat-radio-group
+        [(ngModel)]="radio_answer"
+        [ngModelOptions]="{standalone: true}"
+    >
+        <mat-radio-button
+            [checked]="answer===radio_answer"
+            [value]="answer"
+            [disabled]="disable"
+            class="m-3"
+            color="primary"
+            (change)="onRadioChange($event)"
+            *ngFor="let answer of answer_types"
+        >
+            {{answer}}
+        </mat-radio-button>
+    </mat-radio-group>
+
+    <div class="d-flex flex-row">
+        <ckeditor
+            class="w-100 pb-3"
+            [config]="editor_config"
+            [editor]="Editor"
+            [data]="details"
+            [disabled]="disable"
+            (change)="onTextChange($event)"
+        ></ckeditor>
+
+
+    </div>
+</ng-container>

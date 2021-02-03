@@ -1,0 +1,16 @@
+<div class="d-flex flex-column h-100  sidenav-container pt-3">
+    <div [@slideInOut]="animationState" class="mb-auto">
+        <mat-nav-list class="">
+            <mat-list-item class="mt-1 mr-3" *ngFor="let tab of tabs; index as i" [routerLink]="['/', tab.path]" routerLinkActive="active">
+                <mat-icon class="mr-5 ml-3" color="accent" mat-list-icon>{{tab.icon}}</mat-icon>
+                <h4 mat-line class="text-white mr-3 align-text-center" *ngIf="true">{{tab.tab}}</h4>
+            </mat-list-item>
+        </mat-nav-list>
+    </div>
+
+    <div class="container">
+        <button mat-icon-button (click)="toggleShowDiv('divA')" color="accent">
+            <mat-icon color="primary">menu</mat-icon>
+        </button>
+    </div>
+</div>

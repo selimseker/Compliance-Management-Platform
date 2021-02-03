@@ -1,0 +1,45 @@
+<div class="d-flex flex-column h-100">
+    <div class="flex-grow-1 row d-flex flex-column align-items-center justify-content-center">
+
+        <h4 *ngIf="!topPieLoading">{{selectedDomain.info.title}}</h4>
+
+        <ngx-charts-pie-chart
+            *ngIf="!topPieLoading"
+            [view]="viewTop"
+            [scheme]="colorSchemeTop"
+            [results]="top_pieData"
+            [gradient]="gradient"
+            [legend]="showLegendTop"
+            [legendPosition]="legendPosition"
+            [labels]="showLabelsTop"
+            [trimLabels]="false"
+            [doughnut]="isDoughnutTop"
+        >
+        </ngx-charts-pie-chart>
+
+
+
+    </div>
+
+    <div class="scrolling-wrapper p-1 row flex-row flex-nowrap mb-3">
+
+        <div
+            class="col-3 m-3"
+            *ngFor="let domain of domains"
+        >
+            <ngx-charts-pie-chart
+                [view]="view"
+                [scheme]="colorScheme"
+                [results]="bottom_piesData.get(domain.cid)"
+                [gradient]="gradient"
+                [legend]="showLegend"
+                [legendTitle]="domain.info.title"
+                [legendPosition]="legendPosition"
+                [labels]="showLabels"
+                [doughnut]="isDoughnut"
+                (select)="onSelect(domain)"
+            >
+            </ngx-charts-pie-chart>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,302 @@
+[
+  {
+    "control_id": "1.1",
+    "threats": "Attackers compromise credentials of the system administrator of the enterprise Active Directory, thereby granting the attackers access to all log-in credentials stored in the directory."
+  },
+  {
+    "control_id": "1.1",
+    "threats": "Attackers compromise supporting IT infrastructure (for example, scanning server, patching server), located in the general IT environment, to steal system credentials and subsequently access the local SWIFT infrastructure."
+  },
+  {
+    "control_id": "1.1",
+    "threats": "Attackers gain administrative access to an operator's PC, allowing the attacker to compromise the local account database and reuse the stored hashes to access other systems."
+  },
+  {
+    "control_id": "1.1",
+    "threats": "An operator clicks on a malicious link in an e-mail, unknowingly downloading malware which compromises the local PC."
+  },
+  {
+    "control_id": "1.2",
+    "threats": "A system administrator using the root account in Linux performs unauthorised actions (for example, change security configurations, intentional system crash), which are not traceable to an individual operator."
+  },
+  {
+    "control_id": "1.2",
+    "threats": "An operator with excess administrative privileges deletes logs and other forensic evidence to hide unauthorised actions."
+  },
+  {
+    "control_id": "1.3",
+    "threats": "An attacker with access to the hypervisor could comprise the confidentiality, integrity and availability of virtual machines hosting SWIFT services."
+  },
+  {
+    "control_id": "1.3",
+    "threats": "An attacker with access to the hypervisor or virtual machine provisioning function could create new virtual machines to further their attack, for example by creating fake application services to lure users into divulging sensitive information or download malware."
+  },
+  {
+    "control_id": "1.3",
+    "threats": "Vulnerabilities and/or insecure configuration in the virtualisation platform may allow attackers to breach segregation between virtual machine domains."
+  },
+  {
+    "control_id": "1.4",
+    "threats": "Attackers compromise supporting IT infrastructure (for example, middleware server or virtualisation platform server), to steal system credentials and subsequently access the local SWIFT infrastructure."
+  },
+  {
+    "control_id": "1.4",
+    "threats": "Attackers gain administrative access to an operator's PC, allowing the attacker to compromise the local account database and reuse the stored hashes to access other systems."
+  },
+  {
+    "control_id": "1.4",
+    "threats": "An operator clicks on a malicious link in an e-mail or web page, unknowingly downloading malware which compromises the local PC or server."
+  },
+  {
+    "control_id": "2.1",
+    "threats": "An attacker with network access to the secure zone compromises the integrity of the transactions in transit between the messaging interface and communication interface."
+  },
+  {
+    "control_id": "2.1",
+    "threats": "An attacker with network access to the secure zone is able to monitor unencrypted traffic between local SWIFT components and record confidential transactions."
+  },
+  {
+    "control_id": "2.2",
+    "threats": "An attacker uses a known and unpatched vulnerability to gain access to a server hosting a SWIFT-related application."
+  },
+  {
+    "control_id": "2.2",
+    "threats": "The operating system has aged beyond the vendor's support lifecycle window, resulting in persistent open vulnerabilities with no available remediation from the vendor."
+  },
+  {
+    "control_id": "2.3",
+    "threats": "An attacker uses the default username and password to access the administration interface of a network firewall."
+  },
+  {
+    "control_id": "2.3",
+    "threats": "An attacker uses a vulnerability associated with an unused network protocol (for example, telnet) to gain access to a SWIFT server."
+  },
+  {
+    "control_id": "2.4A",
+    "threats": "An attacker positioned on the used middleware server or between the back office and messaging interface injects unauthenticated transactions."
+  },
+  {
+    "control_id": "2.4A",
+    "threats": "An attacker creates a man-in-the-middle attack to change the beneficiary accounts of valid SWIFT transactions."
+  },
+  {
+    "control_id": "2.4A",
+    "threats": "An attacker positioned on the used middleware server or between the back office and messaging interface is able to monitor unencrypted traffic and record confidential transactions."
+  },
+  {
+    "control_id": "2.5A",
+    "threats": "A data backup location is compromised, and unencrypted SWIFT backups and credential hashes are accessed, providing the attacker with valuable information about SWIFT operators and typical activity within the local environment."
+  },
+  {
+    "control_id": "2.5A",
+    "threats": "Unencrypted backups of SWIFT servers are transmitted over an insecure network connection, resulting in an adversary gaining read-access to all recent messaging traffic records."
+  },
+  {
+    "control_id": "2.6",
+    "threats": "An operator leaves his desk and no timed screen lock-out is implemented, allowing an unauthorised person access to the operator's account and the SWIFT messaging interface."
+  },
+  {
+    "control_id": "2.6",
+    "threats": "An attacker is able to perform surveillance on an unencrypted operator session, and learns from unencrypted information to plan a future attack."
+  },
+  {
+    "control_id": "2.6",
+    "threats": "An attacker is able to perform surveillance on an unencrypted operator session, and steals credentials to create a fraudulent SWIFT transaction."
+  },
+  {
+    "control_id": "2.6",
+    "threats": "An attacker intercepts a transaction sent between the browser and the web application, modifies its content and forwards it to the web application."
+  },
+  {
+    "control_id": "2.6",
+    "threats": "An attacker is able to hijack an open session or bypass an authentication scheme due to unsafe settings to capture or create fraudulent SWIFT transaction."
+  },
+  {
+    "control_id": "2.7",
+    "threats": "A discoverable vulnerability is left unidentified and untreated, allowing an attacker to exploit the vulnerability to gain access to a SWIFT-related server."
+  },
+  {
+    "control_id": "2.8A",
+    "threats": "Outsourced provider does not properly segregate SWIFT systems from other lowsecurity systems, resulting in a virus spreading across environments and affecting the integrity of the SWIFT systems."
+  },
+  {
+    "control_id": "2.8A",
+    "threats": "Outsourced provider does not properly enforce access control, resulting in an unauthorised employee gaining access to the SWIFT messaging interface or other SWIFT related components or systems."
+  },
+  {
+    "control_id": "2.9A",
+    "threats": "Daily reconciliation is not performed, resulting in a fraudulent transaction going unnoticed until beyond the settlement date."
+  },
+  {
+    "control_id": "2.9A",
+    "threats": "Transactions are not limited to normal business hours, resulting in an unnoticed fraudulent transaction."
+  },
+  {
+    "control_id": "2.10",
+    "threats": "Default accounts or passwords may be used by attackers to gain unauthorised access to the application."
+  },
+  {
+    "control_id": "2.10",
+    "threats": "Excessive privileges given to application users may be abused by attackers to perform unauthorised actions on the application."
+  },
+  {
+    "control_id": "2.10",
+    "threats": "An attacker uses a vulnerability associated with an unused network protocol (for example, telnet) or functionality provided by unnecessary packages to gain access to a SWIFT server."
+  },
+  {
+    "control_id": "2.11A",
+    "threats": "RMA relationships are not properly managed, resulting in the processing of a transaction from an unvetted or dormant counterparty."
+  },
+  {
+    "control_id": "3.1",
+    "threats": "Poor log retention results in the inability to fully investigate which personnel had physical access to the safe after a set of SWIFT HSM tokens were discovered to be missing."
+  },
+  {
+    "control_id": "3.1",
+    "threats": "Weak data centre access control provides unauthorised personnel with physical access to perform a physical-based attack on the SWIFT servers."
+  },
+  {
+    "control_id": "4.1",
+    "threats": "A password policy is established but not enforced, resulting in operators using weak passwords that are easily cracked during a cyber attack."
+  },
+  {
+    "control_id": "4.1",
+    "threats": "A password of insufficient length allows the computation of a weak password hash, which an attacker steals from the PC's memory and allows him to recompute the original password."
+  },
+  {
+    "control_id": "4.1",
+    "threats": "The same passwords are used by an administrator for systems inside and outside the secure zone, resulting in an adversary compromising the more exposed password and re-using this knowledge to gain secure zone access."
+  },
+  {
+    "control_id": "4.2",
+    "threats": "Multi-factor authentication is not implemented for application access, resulting in an adversary using a stolen password to gain full access to the SWIFT messaging interface."
+  },
+  {
+    "control_id": "4.2",
+    "threats": "Multi-factor authentication is not implemented for access to the operating system of the messaging interface, resulting in an adversary using a stolen password to gain full administrative access to the system."
+  },
+  {
+    "control_id": "5.1",
+    "threats": "Least privilege controls are not enforced, allowing an operator who only requires readonly access the ability to create and send SWIFT transactions."
+  },
+  {
+    "control_id": "5.1",
+    "threats": "Segregation of duty controls are not enforced, allowing a single operator to create and approve a SWIFT transaction, conflicting with the user's transaction approval policy."
+  },
+  {
+    "control_id": "5.1",
+    "threats": "Account access is not promptly revoked, resulting in a recently transferred employee using their residual access to modify records on the SWIFT messaging interface."
+  },
+  {
+    "control_id": "5.2",
+    "threats": "Poor record keeping during assignment of connected hardware or personal tokens results in the inability to revoke the correct tokens after staff members leave the organisation, leading into unknown and uncontrolled residual access."
+  },
+  {
+    "control_id": "5.2",
+    "threats": "A token is left inserted in an operator's PC when not in use, allowing an attacker to use the token as an authentication credential as part of an attack."
+  },
+  {
+    "control_id": "5.3A",
+    "threats": "A new employee with a previous judicial record for financial fraud is not vetted before being granted operator access, resulting in an untrustworthy individual being placed in a position of trust."
+  },
+  {
+    "control_id": "5.3A",
+    "threats": "Current employees are not periodically vetted, resulting in the organisation not having knowledge of an employee who has taken a part-time job with another financial institution and now has a significant conflict-of-interest."
+  },
+  {
+    "control_id": "5.4",
+    "threats": "A SWIFT operator stores his passwords on a piece of paper at his work area, allowing any personnel with physical access to the area to view the recorded password."
+  },
+  {
+    "control_id": "5.4",
+    "threats": "A SWIFT application administrator stores his administrative passwords in a plain-text file on his PC, thus allowing any PC system administrator access to the passwords."
+  },
+  {
+    "control_id": "6.1",
+    "threats": "Anti-malware software is not installed on the operator PC, resulting in a common malware executable compromising the PC after clicking a phishing e-mail."
+  },
+  {
+    "control_id": "6.1",
+    "threats": "Anti-malware software on the SWIFT servers is not regularly updated, resulting in an otherwise detectable malicious executable causing harm to the servers."
+  },
+  {
+    "control_id": "6.2",
+    "threats": "An advanced attacker modifies the executable of the messaging interface and is not detected because software integrity checking has not been implemented."
+  },
+  {
+    "control_id": "6.2",
+    "threats": "A malicious version of a software update is installed due to not verifying the checksum at time of download."
+  },
+  {
+    "control_id": "6.3",
+    "threats": "A lack of database integrity checking allows targeted malware to delete database records while performing unauthorised transactions."
+  },
+  {
+    "control_id": "6.3",
+    "threats": "A lack of database integrity checking allows an attacker to modify database records to hide evidence."
+  },
+  {
+    "control_id": "6.3",
+    "threats": "A lack of database integrity checking allows a gap in sequential record numbering to remain undetected."
+  },
+  {
+    "control_id": "6.4",
+    "threats": "Poor system logging results in the inability to trace malicious privileged commands to a specific individual during a cyber incident investigation."
+  },
+  {
+    "control_id": "6.4",
+    "threats": "Logs are collected but not monitored, resulting in abnormal activity going undetected until significant financial harm has occurred."
+  },
+  {
+    "control_id": "6.5A",
+    "threats": "A lack of intrusion detection capabilities results in unusual traffic outside normal business hours going undetected."
+  },
+  {
+    "control_id": "6.5A",
+    "threats": "A lack of intrusion detection capabilities results in unexpected protocol traffic for a given port going undetected."
+  },
+  {
+    "control_id": "6.5A",
+    "threats": "The intrusion detection system is not properly configured or monitored, resulting in discoverable intrusions hiding amongst the noise of many false alarms."
+  },
+  {
+    "control_id": "7.1",
+    "threats": "An untested cyber incident response plan results in a poor and uncoordinated response to a serious cyber intrusion, resulting in significant and avoidable financial harm."
+  },
+  {
+    "control_id": "7.1",
+    "threats": "The failure to notify SWIFT during a cyber incident results in incomplete sharing of information, leading to similar cyber incidents at other institutions that could have been avoided."
+  },
+  {
+    "control_id": "7.1",
+    "threats": "The inability to act upon cyber threat intelligence leads to cyber intrusions using known methods, which could have been avoided."
+  },
+  {
+    "control_id": "7.2",
+    "threats": "SWIFT operators are not trained on good security practice, resulting in staff clicking on malicious phishing email links."
+  },
+  {
+    "control_id": "7.2",
+    "threats": "SWIFT application administrators are not trained on security awareness related to their role and thus do not detect or report suspicious activity on the SWIFT systems."
+  },
+  {
+    "control_id": "7.2",
+    "threats": "SWIFT security officers lack knowledge related to their role and thus do not properly assign privileges for operators, allowing the bypass of the segregation of duties principle."
+  },
+  {
+    "control_id": "7.3A",
+    "threats": "Penetration testing is not conducted in the SWIFT environment, and thus excessively permissive firewall rules are not discovered and corrected."
+  },
+  {
+    "control_id": "7.3A",
+    "threats": "Penetration testing is conducted by unqualified staff who are unable to simulate a typical financial industry attacker, which results in a false sense of security and low commitment to needed security improvements."
+  },
+  {
+    "control_id": "7.4A",
+    "threats": "Realistic risk scenarios are not tested within the organisation, resulting in an incorrect estimation of likelihood, impact, and overall cyber risk."
+  },
+  {
+    "control_id": "7.4A",
+    "threats": "Risk scenarios are tested without involvement of the business units and appropriate management, resulting in poor overall value of the activity and low commitment to needed security improvements."
+  }
+]

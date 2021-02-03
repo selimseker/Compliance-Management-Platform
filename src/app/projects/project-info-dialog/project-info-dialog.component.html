@@ -1,0 +1,36 @@
+<div class="container-fluid row h-100">
+
+    <div class="h-100 bg-gray col-6 p-5 d-flex flex-column border">
+        <h4>Gap Analysis Part</h4>
+        <a
+            class="mt-auto"
+            mat-raised-button
+            color="primary"
+            [routerLink]="['/projects', data._id, 'gap-analysis']"
+            (click)="closeDialog()"
+        >Gap Analysis</a>
+        <a
+            class="mt-auto"
+            mat-raised-button
+            [routerLink]="['/projects', data._id, 'report']"
+            (click)="closeDialog()"
+            color="primary"
+        >Create Report</a>
+    </div>
+
+    <div class="h-100 bg-gray col-6 p-5 d-flex flex-column border">
+        <h4>Remidiation Part</h4>
+
+        <a
+            class="mt-auto"
+            mat-raised-button
+            color="primary"
+            [routerLink]="['/projects', data._id, 'gap-analysis']"
+            [disabled]="true"
+        >Remidiation</a>
+    </div>
+
+
+
+
+</div>

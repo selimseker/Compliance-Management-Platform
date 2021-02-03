@@ -1,0 +1,31 @@
+<div class="d-flex flex-column h-100">
+    <mat-selection-list
+        #shoes
+        [multiple]="false"
+    >
+        <mat-list-option
+            class="border"
+            *ngFor="let control of controls | slice: lowValue : highValue; let i = index"
+            [value]="control"
+            (click)="onControlClick(i)"
+        >
+            <div class="d-flex justify-content-between">
+                <span class="control-list-text">{{control.cid}}. {{control.info.title}}</span>
+            </div>
+        </mat-list-option>
+
+
+
+
+
+    </mat-selection-list>
+
+    <mat-paginator
+        class="mt-auto"
+        [length]="controls.length"
+        [pageSize]="pageSize"
+        [pageSizeOptions]="pageSizeOptions"
+        (page)="getPaginatorData($event)"
+    >
+    </mat-paginator>
+</div>

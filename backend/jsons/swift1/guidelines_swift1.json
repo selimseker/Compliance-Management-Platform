@@ -1,0 +1,957 @@
+[
+  {
+    "control_id": "1.1",
+    "guideline_title": "Overall design goals for implementing environment segregation",
+    "guideline_item": "Implement a \u201csecure zone\u201d to separate and protect the local SWIFT infrastructure from the compromise of systems and services located outside of the secure zone."
+  },
+  {
+    "control_id": "1.1",
+    "guideline_title": "Overall design goals for implementing environment segregation",
+    "guideline_item": "To the fullest extent possible, passwords and other authenticators that are usable inside the secure zone (especially for privileged accounts) are not stored or used in any form (hashed, encrypted, or plaintext) in systems outside of the secure zone. This does not apply to encrypted backup files. If the authentication services system is residing outside of the SWIFT secure zone:\\n- Either the system is in another existing secure zone that has similar controls,\\n- Or the system is only used to filter the connections to the SWIFT infrastructure component (controlling then the connectivity at the boundary of the secure zone). In such case, logical access to the SWIFT infrastructure component is ensured by another authentication mechanism residing in the secure zone (another IAM or the accessed component itself)."
+  },
+  {
+    "control_id": "1.1",
+    "guideline_title": "Overall design goals for implementing environment segregation",
+    "guideline_item": "The secure zone is scoped appropriate to each user's environment, including the potential reuse of existing secure zones (for example, a secure \u201cproduction environment\u201d, \u201cback office environment\u201d, or \u201cpayment systems zone\u201d) to include the local SWIFT infrastructure."
+  },
+  {
+    "control_id": "1.1",
+    "guideline_title": "Overall design goals for implementing environment segregation",
+    "guideline_item": "The components within the secure zone are all protected to the same or an equivalent level of security, access control, trust and may communicate freely within the zone.."
+  },
+  {
+    "control_id": "1.1",
+    "guideline_title": "Overall design goals for implementing environment segregation",
+    "guideline_item": "Appendix B contains illustrative architecture diagrams showing samples of the many ways a secure zone may be designed."
+  },
+  {
+    "control_id": "1.1",
+    "guideline_title": "Scope of the secure zone",
+    "guideline_item": "The secure zone contains, but is not limited to, all components of the local SWIFT infrastructure. This includes: the messaging interface, communication interface, browser-based GUI, SWIFTNet Link, Hardware Security Module (HSM), SWIFT connector, jump server (see details below), and any applicable operator PCs solely dedicated to the operation or administration of the local SWIFT infrastructure.\\n-General purpose operator PCs are not included in the secure zone.\\n-Dedicated operator PCs with SWIFT-related software installed (that is, \"thick client\" GUI software) are located in the secure zone, or the software is installed only on the jump server to be accessed by the general purpose operator PCs outside of the secure zone.\\n-Back office and middleware systems (for example, IBM\u00ae MQ server) are not necessarily included in the secure zone, but may be considered for inclusion depending on the chosen size and scope of the secure zone.\\n-Test systems are preferably fully segregated from production systems (incl. separate HSMs) and configured to only support test traffic (for example, by only using lite certificates and only configuring test logical terminals). If not fully segregated, these systems must be maintained to the same security level as the production systems. \\n Development systems are not within the secure zone and are not connected to the SWIFT network.\\n-The Alliance Connect VPN boxes or their virtual instances (hosting systems or machines) are in a secure environment with appropriate physical controls (in line with control 3.1)."
+  },
+  {
+    "control_id": "1.1",
+    "guideline_title": "Scope of the secure zone",
+    "guideline_item": "The secure zone size and scope is defined in a way that is most appropriate to the user's environment.\\n Options may include, but are not limited to:\\n-A SWIFT secure zone dedicated only for the local SWIFT infrastructure.\\n-An expansion of an existing secure area (for example, a secure \u201cproduction environment\u201d or \u201cpayment systems zone\u201d) to include the local SWIFT infrastructure. The size and scope of this zone may vary significantly depending on the existing environment."
+  },
+  {
+    "control_id": "1.1",
+    "guideline_title": "Scope of the secure zone",
+    "guideline_item": "Software, systems, and services within the secure zone are assessed for need and removed from the zone if not supporting the operations or security of the zone (for example, assess the need for email access)."
+  },
+  {
+    "control_id": "1.1",
+    "guideline_title": "Protection of the secure zone",
+    "guideline_item": "Transport layer stateful firewalls are used to create logical separation at the boundary of the secure zone.\\n-Transport layer firewalls creating the secure zone boundary should be physically or virtually dedicated to the protection of the secure zone. In case a firewall is shared to separate other zones, care must be taken for its management to ensure that compromise of the firewall should not affect the protection of the secure zone.\\n-ACLs, and application firewalls may be used to provide additional protections for the secure zone, but are not alone sufficient."
+  },
+  {
+    "control_id": "1.1",
+    "guideline_title": "Protection of the secure zone",
+    "guideline_item": "Layer 2 devices (data link layer, such as switches) may be shared between the secure zone and other uses (VLAN segregation)."
+  },
+  {
+    "control_id": "1.1",
+    "guideline_title": "Protection of the secure zone",
+    "guideline_item": "Administrative access to networking devices is protected using either an out-of-band network or through controlled in-band access (for example, a management VLAN). Administrative access to the firewall(s) protecting the secure zone does not rely on the enterprise user authentication system but a system located within an existing secure zone that has similar controls as the SWIFT secure zone."
+  },
+  {
+    "control_id": "1.1",
+    "guideline_title": "Protection of the secure zone",
+    "guideline_item": "Inbound and outbound connectivity for the secure zone is limited to the fullest extent possible. A process is implemented to analyse, review, and enforce the firewall rules governing the connectivity.\\n-No \"allow any\" firewall rules are implemented, and all network flows are explicitly authorised (whitelisting).\\n To achieve this, a general enterprise server might initially be used to filter legitimate connectivity access towards the secure zone without losing traceability of such connections.\\n-Generally, connectivity crossing the secure zone boundary is restricted to: bi-directional communications with back office applications and MV-SIPN18, inbound communications from approved general purpose operator PCs to the jump server, and outbound administration data (data logging, backups).\\n-Firewall rules are reviewed at least annually.\\n-Connections through the boundary firewalls are logged"
+  },
+  {
+    "control_id": "1.1",
+    "guideline_title": "Access to the secure zone systems",
+    "guideline_item": "The secure zone has implemented one of the following designs for restricting operator access (interactive or command-line sessions) into the secure zone:\\n-Operators connect from dedicated operator PCs located within the secure zone (that is, PCs located within the secure zone, and used only for secure zone purposes).\\n-Operators connect from their general purpose operator PC to the secure zone via a jump server (for example, using a Citrix-type solution or Microsoft Terminal Server) located within the SWIFT secure zone or within another existing secure zone that has similar controls.\\n o Ensuring all in-scope security controls in this document are implemented (for example: security updates, system hardening),\\n o Separate jump server for system administrators (with multi-factor authentication) and end users, As an alternative to separate jump servers, only allow temporary access to system administrators with effective approval process and session activity recording.\\n o Restricting access to only authorised operators,\\n o Removing any unnecessary software,\\n o Restricting risky activity (for example: sending/receiving email),\\n o Enabling logging.\\n-Operators connect from their general purpose operator PC and only access the messaging or communication interface using a browser-based GUI (for example, Alliance Web Platform). Specific security controls apply to this setup:\\n o The browser-based GUI is located in the secure zone and is logically separated from the messaging and communication interface.\\n o Multi-factor authentication is implemented where appropriate (on the browser-based GUI, on the messaging interface, or on the communication interface).\\n o This setup cannot be used for operating system administration activities."
+  },
+  {
+    "control_id": "1.1",
+    "guideline_title": "Access to the secure zone systems",
+    "guideline_item": "SWIFT systems within the secure zone restrict administrative access to only expected ports, protocols, and originating IPs."
+  },
+  {
+    "control_id": "1.1",
+    "guideline_title": "Remote Operator Access (teleworking, \u201con-call\u201d duties, or remote administration)",
+    "guideline_item": "Remote access to the secure zone from outside of the local user network first requires VPN authentication (recommended with multi-factor authentication) to the local network before accessing the secure zone via the same secured channels as local operators."
+  },
+  {
+    "control_id": "1.1",
+    "guideline_title": "Remote Operator Access (teleworking, \u201con-call\u201d duties, or remote administration)",
+    "guideline_item": "A risk assessment is performed by the user to consider additional security controls to be implemented for remote access, such as use of virtual desktop infrastructure, dedicated channels for connectivity (for example, dedicated jump servers for remote users, leased lines)."
+  },
+  {
+    "control_id": "1.1",
+    "guideline_title": "Segregation from General Enterprise IT Services",
+    "guideline_item": "To protect the secure zone from credential theft and/or compromise of enterprise authentication (LDAP, RADIUS, Identity Provider, multi-factor) services, secure zone systems use a separate authentication system from the general enterprise authentication service. For example, secure zone systems are not a member of the corporate directory service, but are instead members of a secure zone directory service."
+  },
+  {
+    "control_id": "1.1",
+    "guideline_title": "Segregation from General Enterprise IT Services",
+    "guideline_item": "Supporting IT infrastructure, such as asset management, databases, data storage, security services (for example, patching) and networking services (for example, DNS, NTP) used within the secure zone is protected from credential compromise within the larger enterprise. Institutions must conduct an analysis of connectivity points ensuring that these systems do not store authenticators (passwords, tokens, etc.) for systems and accounts in scope in any format (hashed, encrypted, plaintext) outside of the secure zone or another existing secure zone that has similar controls. Indeed, the supporting IT infrastructure need not be exclusive to SWIFT systems and may be shared within the secure zones."
+  },
+  {
+    "control_id": "1.1",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Systems within the secure zone implement, when technically possible, application whitelisting, allowing only trusted applications to be executed."
+  },
+  {
+    "control_id": "1.1",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Restrict, through additional segregation, the communication between components of the secure zone considering:\\n-Network ACLs or host-based firewalls restricting traffic on a host-by-host basis within the secure zone.\\n-Individual hardware or network-based firewalls between the components in the secure zone can optionally be used."
+  },
+  {
+    "control_id": "1.2",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Administrator-level accounts are defined as:\\n-Windows: built-in administrator account and members of groups with administrator privileges (for example, accounts with debug or file system privileges). Typically, Enterprise Admins group, Domain Admins group and Local Administrator group.\\n-Linux/Unix: root account (User ID = 0) and members of the root group.\\n-Mainframe: system administrator or system programmer role."
+  },
+  {
+    "control_id": "1.2",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Access to administrator-level operating system accounts is restricted to the maximum extent possible unless needed to install, configure, maintain, operate and support emergency activities. The use of the administrator-level account is limited to the duration of the activity (for example, maintenance windows)."
+  },
+  {
+    "control_id": "1.2",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Log-in with built-in administrator-level accounts is not permitted, except to perform activities where such accounts are specifically needed (for example, system configuration) or in emergency situations (break-glass account). Individual accounts with administrator-level privileges or accounts with the ability to escalate to administrative access, (like 'sudo') are used instead."
+  },
+  {
+    "control_id": "1.2",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Individual administrator-level account access and usage are logged so that activities can be reconstructed to determine the root-cause of incidents."
+  },
+  {
+    "control_id": "1.2",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Administrator-level passwords are tightly controlled with physical access controls when physically recorded."
+  },
+  {
+    "control_id": "1.2",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Systems are configured to not allow log-in of built-in administrator-level accounts, except via a maintenance mode (for example, single user mode or safe mode). This effectively prohibits logging into the account as a service, batch job, through remote desktop services, or by escalating privilege from another account."
+  },
+  {
+    "control_id": "1.3",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "When relying on a third party for the underlying virtualisation platform, the user has to engage with the third party to obtain reasonable comfort the control objective is met."
+  },
+  {
+    "control_id": "1.3",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "The same security requirements apply to the virtualisation platform, virtual machines and supporting virtual infrastructure as for all other infrastructure systems and components. Those security requirements cover, for example, location in an existing secure zone that has similar controls as the ones applicable to the SWIFT secure zone, privileged access restrictions, log-in and password policy, installation of security patches, and restriction of internet access. Those controls have the virtualisation platform identified in their \u201cIn-scope components\u201d section."
+  },
+  {
+    "control_id": "1.3",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Vulnerability scanning is performed on SWIFT-related VM\u2019s and when technically possible on the virtualisation platform."
+  },
+  {
+    "control_id": "1.3",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "The virtualisation platform hosts are subject to physical protection preventing unauthorised physical access."
+  },
+  {
+    "control_id": "1.3",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "VM\u2019s isolation is ensured on the virtualisation platform to prevent a) lateral move out of a virtual machine to access or interact with other VM\u2019s or the underlying hypervisor or b) bypassing normal network controls that filter and/or inspect connections to the SWIFT environment.\\n o Filtering and expected inspection of the network flows reaching the SWIFT-related VMs are performed preferably using resources (such as FW, packet inspections or content filtering) external to the virtualisation platform or must be enforced at the hypervisor level.\\n o Provided that isolation is ensured on the virtualisation platform, the hosted VM\u2019s can keep their (security) classification and be individually secured accordingly (as such, they would not inherit the classification of the SWIFT related VM\u2019s and be subject to all SWIFT related controls)."
+  },
+  {
+    "control_id": "1.3",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "If multi-factor authentication is implemented for interactive access to the SWIFT related VM\u2019s operating systems, in line with control 4.2, preventing direct access to those VM\u2019s from the hypervisor layer, multi factor authentication is not mandated at the virtualization platform management level."
+  },
+  {
+    "control_id": "1.4",
+    "guideline_title": "Internet access from the secure zone",
+    "guideline_item": "General purpose internet browsing (including Web Mail activities) from systems within the SWIFT secure zone is not permitted."
+  },
+  {
+    "control_id": "1.4",
+    "guideline_title": "Internet access from the secure zone",
+    "guideline_item": "Internet access from systems within the secure zone (for example, dedicated operator PCs or other SWIFT related components) is highly restricted and ideally blocked.\\n-When possible, activities that require the internet are conducted outside of the secure zone. Example activities may include conducting daily business on swift.com, or downloading security patches for secure transfer into the secure zone.\\n-If internet access is needed from within the secure zone, access should be granted only to whitelisted URL destinations via a proxy with content inspection and adequate blocking/filtering controls. Connections are only permitted if initiated in the outbound direction."
+  },
+  {
+    "control_id": "1.4",
+    "guideline_title": "Internet access from the secure zone",
+    "guideline_item": "As the entry point into the secure zone, the jump server, located within the secure zone or another existing secure zone that has similar controls, does not have internet access."
+  },
+  {
+    "control_id": "1.4",
+    "guideline_title": "Internet access from general operator PCs",
+    "guideline_item": "Control internet access provided on the general purpose operator PCs used to\\n-connect to an application at the service provider (user-to-application) to process financial transactions20.\\n-access a messaging or communication interface through a browser-based GUI (for example, Alliance Web Platform)\\n Through one of the following options:\\n 1. Internet access through a remote desktop or virtual machine solution\\n 2. Internet access from the general purpose operator PC to only whitelisted URL destinations via a proxy with content inspection, in combination with adequate blocking/filtering controls and permitting only outbound initiated connections.\\n 3. Internet access from the general purpose operator PC through a Web Gateway (with content inspection, in combination with blocking/filtering controls) using maintained blacklisted URL destinations"
+  },
+  {
+    "control_id": "1.4",
+    "guideline_title": "Internet access from general operator PCs",
+    "guideline_item": "Even if SWIFT strongly recommends to control internet access, another way to meet the control objective on those PCs accessing the local SWIFT infrastructure is to enforce usage of a jump server that has no internet access combined with multi-factor authentication, in line with control 4.2, implemented on the individual SWIFT related applications/systems or at the jump server."
+  },
+  {
+    "control_id": "1.4",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "Internet access from, when used, the middleware system (such as IBM\u00ae MQ server) or the virtualisation platform underlying system (also referred as the hypervisor) is highly restricted and ideally blocked.\\n-When possible, activities that require the internet are conducted from other systems. Example of such activities include conducting daily business, or downloading security patches for secure transfer into the target system."
+  },
+  {
+    "control_id": "1.4",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "If internet access is needed from those systems, access should be granted only to whitelisted URL destinations via a proxy with content inspection and adequate blocking/filtering controls. Connections are only permitted if initiated in the outbound direction."
+  },
+  {
+    "control_id": "2.1",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "All data flows between SWIFT-related applications are protected using a secure mechanism (for example, \u201cLocal Authentication (LAU) in combination with a confidentiality protection21\u201d or \u201c2-way TLS\u201d) to support the confidentiality, integrity and mutual authentication of the data flows. This includes the following data flows:\\n-RMA application to messaging interface,\\n-GUI to messaging interface,\\n-GUI to communication interface,\\n-Messaging interface to communication interface"
+  },
+  {
+    "control_id": "2.1",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "The communication between the jump server when used, and the SWIFT-related applications is protected using a secure mechanism (for example, one-way TLS) to support the confidentiality and integrity of the users\u2019 connection to the applications."
+  },
+  {
+    "control_id": "2.1",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "Secure protocols use current, commonly accepted cryptographic algorithms (for example, AES22, ECDHE23), with key lengths in accordance with current best practices. More guidelines on cryptographic algorithms supporting secure protocols can be found in SWIFT Knowledge Base TIP 5021566."
+  },
+  {
+    "control_id": "2.2",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "Vendor support\\n-All software (including operating systems) and hardware (including network devices) are within the actively supported product lifecycle window of the vendor (including extended support), if applicable.\\n-Maintenance or licensing contracts are in place for access to updates, minor upgrades, and other critical maintenance functions."
+  },
+  {
+    "control_id": "2.2",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "Mandatory software updates\\n-Mandatory releases or updates that are applicable to a local SWIFT component are installed within the deadline specified by the vendor."
+  },
+  {
+    "control_id": "2.2",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "Application of security updates\\n-A risk assessment process is in place to determine the most appropriate treatment of vendor security updates/patches. Risk assessment considerations may include: the vendor-reported criticality of the patch, user exposure and vulnerability, mitigating controls, and operational impact.\\n-User-defined deployment timelines are established for applying patches based on criticality, system type, and required patch testing.\\n-In the absence of established internal processes and timelines, SWIFT recommends the use of Common Vulnerability Scoring System (CVSS) Version 3 as a guideline for criticality, with the following patch deployment targets:\\n o Critical (9.0+ score): applied within 1 month of release\\n o High (7.0 - 8.9 score): applied within 2 months of release\\n o Low / Medium ( < 7.0 score): user defined.\\n-Note: It is common practice that operating system security updates/patches are usually automatically pushed and applied on the Operator PCs shortly after their publication by the provider."
+  },
+  {
+    "control_id": "2.2",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "Source and integrity validation of software and security updates"
+  },
+  {
+    "control_id": "2.2",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "Before applying the software and security updates, their legitimate source is validated and integrity checks (for example checksum validation) performed when technically possible."
+  },
+  {
+    "control_id": "2.3",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "All in-scope systems are hardened considering one or more of the following:\\n-Vendor security configuration guidance,\\n-Industry-standard security configuration guidance (for example,24 CIS , DISA STIG, NIST),\\n-A local or regulator's standard security configuration or controls set of the same rigour as the vendor or industry guidance.\","
+  },
+  {
+    "control_id": "2.3",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "The selected hardening configuration (set of rules) can be overruled by application-specific configuration requirements to maintain a proper operational state for SWIFT-related systems."
+  },
+  {
+    "control_id": "2.3",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "At a minimum, the hardening process should:\\n-Change default passwords,\\n-Disable or remove unnecessary user accounts,\\n-Disable or restrict unnecessary services, ports, and protocols,\\n-Remove unnecessary software,\\n-Restrict physical ports (for example, USB) as appropriate,\\n-Set, when technically possible, auto-lock options (such as activating an operator PC screen saver requiring to sign-in again after an inactivity time-out or once turned into sleep mode \u2013 a 15-minute inactivity time-out is recommended)\\n-Adjust any default configurations known to be vulnerable.\\n The vendor and industry standards listed above can provide detailed guidance on accomplishing these minimum targets.\","
+  },
+  {
+    "control_id": "2.3",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "Deviations from the selected hardening configuration are documented along with justification for the deviation and potential mitigations applied."
+  },
+  {
+    "control_id": "2.3",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "Systems are maintained secure:\\n-By checking regularly, at least twice a year, the systems against the secure settings identified as per preceding guidance to take any relevant corrective actions\\n-Or by regularly applying the identified secure settings to the systems."
+  },
+  {
+    "control_id": "2.4A",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "Data flowing between local or remote (hosted and/or operated by a third party) SWIFT-related components and the back office systems (or middleware systems) they are directly connected to, is protected using a secure mechanism (for example, \"LAU in combination with a confidentiality protection\" or another message based authentication solution, XML DSIG, AES GCM Authenticated Encryption, 2-way TLS) that provides confidentiality, integrity, and mutual authentication of the data in transit. This includes the data flow between:\\n-Messaging interface and the first back office (or middleware) hops as seen from the interface,\\n-Communication interface and the first back office (or middleware) hops as seen from the interface,\\n-Connector and first back office (or middleware) hops as seen from the connector."
+  },
+  {
+    "control_id": "2.4A",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "Secure protocols use current, commonly accepted cryptographic algorithms (for example, AES25, ECDHE26), with key lengths in accordance with current best practices. More guidelines on cryptographic algorithms supporting secure protocols can be found in SWIFT Knowledge Base TIP 5021566."
+  },
+  {
+    "control_id": "2.4A",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "As this control is expected to be (gradually) turned Mandatory in a future release, following guidelines are already provided to gradually reach compliance:\\n-Have an inventory of data flows between SWIFT related components and the first back office (or middleware) hops\\n-Have a plan to implement/activate secure mechanisms for identified flows considering o Implementing secure mechanisms (see first bullet above) as exposed by the interfaces, connectors or middleware server\\n o Migrating opportunistically legacy and less standard flows to secure mechanisms or protocols\\n o Mitigating, in the meantime, the risk of back office host spoofing or messages injection through systems or network connectivity means."
+  },
+  {
+    "control_id": "2.4A",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "When a middleware server or a customer connector is used, some requirements are expected on the supporting hosts; the latter are indeed the guardians of the connections between the back office and the SWIFT-related components or SWIFT:\\n-Irrespective of where the middleware server or customer connector hosts are located and shared with, the same security requirements apply to those hosts, such as channelled MQ servers used to reach a back office first hop, as for other SWIFT-related components or infrastructure systems. Those security requirements cover: location in another secure zone that has similar controls as the ones applying to the SWIFT secure zone, privileged access restrictions, log-in and password policy, installation of security patches, restriction of internet access. Those controls have middleware server and/or customer connector identified, as \u2018Advisory\u2019 so far, in the \u201cIn-scope components\u201d of their control definition.\\n-Protection of the data on the middleware servers (such as data present in the queues of MQ servers used to reach the back office first hops) or on the customer connector has to be ensured to prevent unauthorised access. That can be done for instance by implementing thorough access control or by opportunistically encrypting queues or data at rest)\\n-Protection of the SWIFT related data flowing between the middleware server hosts (such as between several channelled MQ servers) should be ensured as part of the middleware infrastructure protection by using secure mechanisms (see first bullet of the implementation guidelines above)\\n-Definition and management of the connectivity rules and business flows on the middleware servers have to be secured to prevent unauthorised flows"
+  },
+  {
+    "control_id": "2.4A",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "For middleware server (such as IBM\u00ae MQ) directly connecting SWIFT infrastructure components, it is advised to also implement the same level of protection on the flows between this middleware server and the back office first hops as seen from an application point of view by the SWIFT-related component. Similarly, it is also advised to implement the same level of protection between a customer connector and the back office first hops, if any, as seen from an application point of view. To gradually reach control compliance for those links, the following guidelines are already provided:\\n-Have an inventory of SWIFT-related data flows (i) between middleware server and the back office first hops as seen from SWIFT-related component and (ii) between a customer connector and the back office first hops as seen from the customer connector.\\n-Have a plan to activate secure mechanisms for identified flows considering\\n o Implementing secure mechanisms (see first bullet of the implementation guidelines above) as exposed by the middleware server, the customer connector or the back office system\\n o Opportunistically migrating legacy and less standard flows to secure mechanisms or protocols\\n o Ensuring, in the meantime, authentication of the data sources and authorisation of the SWIFT-related data through (i) native middleware functionalities or (ii) systems or network connectivity means preventing host spoofing.\\n Note: SWIFT expects this control to become mandatory in a future version of this document and will phase the expectations:"
+  },
+  {
+    "control_id": "2.4A",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "Starting with, when used, customer connector and middleware servers"
+  },
+  {
+    "control_id": "2.4A",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "The flows between the middleware servers and the SWIFT-related components and"
+  },
+  {
+    "control_id": "2.4A",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "Closing with the SWIFT-related flows towards the back office systems reached by the SWIFT-related components or the customer connector, directly or via the middleware server."
+  },
+  {
+    "control_id": "2.5A",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "Replicated or extracted SWIFT-related sensitive data (business transaction data revealing details such as involved debtors, creditors, accounts, amounts, trade information), passwords and other authenticators is :\\n-Protected from unauthorised access when stored outside of the SWIFT secure zone or another secure zone that has similar controls as the SWIFT secure zone. Such replicated or extracted data set is also ideally encrypted when stored outside of a secure zone (this can be achieved either at data, file, application or system level), \\n Encrypted when in transit between secure zones (for example, between data centres) or transferred outside of a secure zone (SWIFT or another zone that has similar controls). Encryption can be applied on the data or at the network/communication/transport layer."
+  },
+  {
+    "control_id": "2.5A",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "When relying on a remote virtualisation platform (hosted and/or operated by a third party) it is recommended to ensure encryption of the data. This can be obtained at the subscription or at storage level expected to be offered by the third party to give assurance regarding access to stored data."
+  },
+  {
+    "control_id": "2.5A",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "Encryption protocols or mechanisms use a current, commonly accepted cryptographic algorithm (for example, AES28, ECDHE29), with key lengths in accordance with current best practices. More guidelines on cryptographic algorithms supporting currently secure protocols can be found in SWIFT Knowledge Base TIP 5021566."
+  },
+  {
+    "control_id": "2.5A",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "Encryption mechanisms comply with applicable laws and regulations30."
+  },
+  {
+    "control_id": "2.5A",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "If the cryptography protecting SWIFT-related sensitive data has been compromised, a process should be established to apply new cryptography and secure or destroy any compromised copies of the data.\\n Note: It is expected that backups kept for business or system recovery are maintained in a secure zone that has similar controls as the SWIFT secure zone."
+  },
+  {
+    "control_id": "2.6",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "All interactive sessions are protected by a cryptographic protocol (for example, ssh, https with one-way TLS)."
+  },
+  {
+    "control_id": "2.6",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "Protocols use a current, commonly accepted cryptographic algorithm (for example, AES31, ECDHE32), with key lengths in accordance with current best practices. More guidelines on cryptographic algorithms supporting secure protocols can be found in SWIFT Knowledge Base TIP 5021566."
+  },
+  {
+    "control_id": "2.6",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "Operator sessions and other session types (for example, admin or maintenance) have an inactivity lock-out feature that limits the session to the minimal timeframe necessary to perform business-as-usual duties."
+  },
+  {
+    "control_id": "2.6",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "If the inactivity lock-out is not implemented at the application level, it should be implemented at the operating system-level of the application, or on the jump server."
+  },
+  {
+    "control_id": "2.7",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "Vulnerability scanning is performed at least annually or after any significant change to the environment (for example, introduction of new servers or components and network design change modifying/increasing the range of in-scope components).\\n-Vulnerability scanning tools are from a reputable vendor and updated with scan profiles within one month prior to scanning.\\n-The most appropriate type of vulnerability scanning (such as using credentials or black-box) is selected for the environment. Any administrative credentials used for scanning are appropriately protected.\\n-Sufficient risk-based safeguards are in place to minimise any operational impact (for example, running scans in safe mode, or omitting systems that may be negatively affected from the scan)."
+  },
+  {
+    "control_id": "2.7",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "Beyond vulnerability identification through scanning, all penetration tests or effective vulnerability tests on or through SWIFT-related services and products are consistent with the SWIFT Customer Testing Policy The outcome of the vulnerability scanning is documented (with restricted access) and analysed for appropriate action and remediation (such as applying security updates in line with control 2.2)."
+  },
+  {
+    "control_id": "2.7",
+    "guideline_title": "Internet Access from other components (middleware servers or the virtualisation platform - Advisory)",
+    "guideline_item": "Once per quarter, month or ideally real-time scanning is recommended."
+  },
+  {
+    "control_id": "2.7",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Vulnerability scanning includes network components (such as routers and switches)."
+  },
+  {
+    "control_id": "2.7",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Vulnerability scanning includes the general purpose operator PCs used to connect to local or service provider\u2019s SWIFT related infrastructure. As an alternative, security patches are regularly applied on the general purpose operator PCs. In the latter case, only supported and regularly patched applications are deployed on those PCs."
+  },
+  {
+    "control_id": "2.7",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Vulnerability scanning possibly includes the local or remote (hosted and/or operated by a third party) Virtualisation platform hosting the SWIFT-related VM\u2019s."
+  },
+  {
+    "control_id": "2.8A",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "When outsourcing its SWIFT\u2013related infrastructure or part of it to a third party (such as an external IT provider or a cloud provider such as in the case, when available, of the Digital Connectivity solution) acting on his behalf, the user remains responsible for the conformance with the security controls of this framework and must seek compliance from that third party."
+  },
+  {
+    "control_id": "2.8A",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "When the third party provides shared services to connect not-related SWIFT users, the third party must be registered to the Shared Infrastructure Programme (SIP) or the Alliance Lite2 for Business Applications (L2BA) programme. The user remains responsible for his own infrastructure, organisation and for implementing secure data flows towards the provider in line with the provider\u2019s specifications. The user is also responsible for monitoring his provider\u2019s compliance with the relevant SIP or L2BA programme33:\\n-Service bureaux registered and compliant under the Shared Infrastructure Programme are listed in the SWIFT Partner Programme Service Bureau Directory\\n-Lite2 for Business Applications providers registered and compliant under the related programme are listed in the Lite2 Business Applications Providers Directory"
+  },
+  {
+    "control_id": "2.8A",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Service Level Agreements (SLA) and a Non-Disclosure Agreement (NDA) are established with any third party or service provider to whom critical activities have been outsourced. These SLA define the standard of care under which those critical operations are carried out by the third party or the service provider."
+  },
+  {
+    "control_id": "2.8A",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "A risk assessment of the third party is conducted at the start of the engagement, and reviewed on a regular basis thereafter.\\n Note: SWIFT expects this control to become mandatory in a future version of this document."
+  },
+  {
+    "control_id": "2.9A",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Implement controls that will detect, prevent, or additionally validate the flow of transactions against expected bounds of normal business (payment controls service). Examples of potential measures include:\\n-A) Limiting traffic outside of business hours:\\n o As business hours are organizational and business unit specific, multiple start and finish times (business hours) may need to be supported or no specific range can be defined for systems used in 24 hours basis.\\n o Consider restricting SWIFT transaction submission and approval outside of normal business hours34. In cases of 24-hour centralised SWIFT processing, monitor transactions as appropriate to support business as usual: suspicious messages can be blended in with legitimate traffic.\\n o Consider enabling active SWIFTNet FIN sessions to business hours only (for example, automated logical terminal sessions log out at end of business day). In cases of 24-hour centralised SWIFT processing, monitor transactions as appropriate to support business as usual.\\n-B) Performing end of day and possibly intra-day validations:\\n o Have a process in place to issue and check confirmation messages (for example, to check that the MT900 and MT910 confirmations match the transactions which have occurred on the accounts),\\n o Reconciliation of the entity's accounting records with end-of-day statement messages (for example, MT 940 and MT 950),\\n o Reconciliation is performed daily between the messages that are sent to/from the back office and to/from the SWIFT Network,\\n-C) Performing central checks on payments to spot potential abnormal behaviour:\\n o Session numbers within the messaging interface are tracked to ensure that the sequential session numbering is intact with no unexpected gaps,\\n o Monitor uncharacteristic transactions (for example, exceptionally high amounts or cumulative amounts, unusual beneficiaries, senders or currencies)."
+  },
+  {
+    "control_id": "2.9A",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Alternatively or in addition, independent reconciliation is undertaken with users' transaction data securely obtained from a secondary source (either internal or external such as SWIFT daily validation reports) or by verifying, the transaction is genuine with the emitter and/or the recipient."
+  },
+  {
+    "control_id": "2.9A",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Application and operating system accounts are restricted from log-in attempts that occur outside of expected role-specific operational hours."
+  },
+  {
+    "control_id": "2.9A",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Implement controls to restrict inbound transaction activity"
+  },
+  {
+    "control_id": "2.10",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Ensure the messaging and communication interfaces are SWIFT-compatible (the list of compatible interfaces is published in the Compatible Register on www.swift.com)\\n-The SWIFT-compatible interface should meet all the security conformance requirements (mandatory and advisory) defined in the SWIFT Compatible Interface Programme.\\n o If some security conformance requirements are yet to be met, the user should upgrade to a SWIFTcompatible interface implementing at least the minimum mandatory security conformance requirements.\\n o The interface provider should be contacted in case of doubt regarding the availability of some security functionalities or their proper configuration and usage."
+  },
+  {
+    "control_id": "2.10",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "All in-scope applications are hardened considering one or more of the following:\\n-Vendor security, operational or configuration guidance (such as the SWIFT Alliance Security Guidance),\\n-A local or regulator's standard security configuration or controls set of the same rigour as the vendor guidance."
+  },
+  {
+    "control_id": "2.10",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "At a minimum, the application hardening process should:\\n-Change default existing passwords,\\n-Disable or remove unnecessary user accounts,\\n-Disable or restrict unnecessary components, adaptors or connectivity methods,\\n-Configure securely the adapters, connectivity methods or remote connections,\\n-Remove unnecessary packages,\\n-Adjust any default configurations known to be vulnerable."
+  },
+  {
+    "control_id": "2.10",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Deviations from the selected hardening configuration (i.e. a set of rules) are documented along with the justification for the deviation."
+  },
+  {
+    "control_id": "2.10",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Additional applications installed on the systems hosting in-scope components and handling SWIFT-related data are also subject to considered application hardening as per the vendor recommendations."
+  },
+  {
+    "control_id": "2.11A",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Relationship Management Application (RMA)\\n-Appropriate know-your-customer principles and due diligence is performed during the creation and maintenance of RMA relationships.\\n-RMA relationships are reviewed at least annually to ensure that obsolete (unused, dormant or unwanted) relationships are analysed and removed/revoked in a timely manner."
+  },
+  {
+    "control_id": "2.11A",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Relationship Management Application Plus (RMA+)\\n-Restrict the valid RMA relationships to the specific message types that are agreed with the counterparty\\n Note: SWIFT expects this control to become mandatory in a next version of this document."
+  },
+  {
+    "control_id": "3.1",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Security of Removable Equipment\\n-Sensitive removable equipment (for example, PIN Entry Device (PED), PED keys, SWIFT-related smart cards, USB Tokens, TOTP Devices) is supervised or securely stored when not in use.\\n-Sensitive removable equipment required for normal continuous operations (for example, hot swappable disks, HSM devices) are hosted in a data centre or, at a minimum, in a locked room.\\n-Back-up media (for example, tapes) is physically secured.\","
+  },
+  {
+    "control_id": "3.1",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Security of the Workplace Environment\\n-Operator PCs are located in a secured workplace environment where access is controlled and granted only to employees and other authorised workers and visitors. A separate physical area for operator PCs accessing SWIFT systems is not required.\\n-Printers used for SWIFT transactions are located in a secured workplace environment and their access is restricted.\\n-USB and other external access points on operator PCs are disabled to the maximum extent possible, while still supporting operations (for example, when tokens are required to authenticate users or message operations)."
+  },
+  {
+    "control_id": "3.1",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Security for Remote Workers (for example, teleworkers, \"on call\" operations staff)\\n-A security policy is established to support expected use cases for remote workers. The following items are considered when establishing the policy:\\n o Physical security of the expected teleworking environment,\\n o Rules for personal equipment used for SWIFT business purposes (for example, personal PCs cannot be used to access the SWIFT infrastructure, however personal mobile devices can be used as a second authentication factor),\\n o Security during use in public environments,\\n o Security during public and private transport,\\n o Equipment storage,\\n o Unauthorised access to equipment (for example, from family or friends),\\n o Remote access requirements (recommended VPN with multi-factor authentication),\\n o Protection of mobile devices used for authentication, such as OTP (recommend enabling password and auto-lock features),\\n o Compensating controls (for example, virtual desktop preventing local storage; full-disk encryption),\\n o Reporting of security incidents (for example, theft) while working remotely."
+  },
+  {
+    "control_id": "3.1",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Security of the Server Environment\\n-Servers are hosted in a data centre or, at a minimum, in a locked room with limited and controlled access (for example, using access control cards or biometrics).\\n o Ideally, servers are rack-mounted. A risk assessment is conducted to determine if a separate and exclusive rack, or the locking of the rack, is appropriate based on the existing data centre physical access controls.\\n-The server environment has video surveillance with movement detection and recording equipment. The implementation of video surveillance recording and retention of images comply with applicable laws and regulations35. Ideally, images are retained for at least three months.\\n-No physical reference to SWIFT on servers (for example, labels).\\n-External ports (for example, USB, serial bus) on servers are disabled to the maximum extent possible while still supporting operations."
+  },
+  {
+    "control_id": "3.1",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Physical Access Logging and Review\\n-Physical access to sensitive equipment areas (for example, data centre, secured storage) is logged.\\n-Physical access logs are available for audit and investigations, and are retained for a minimum of 12 months and in compliance with applicable laws and regulations.\\n-Physical access is promptly revoked (or modified) when an employee changes roles or leaves the organisation.\\n-Physical access control lists are reviewed at least annually."
+  },
+  {
+    "control_id": "4.1",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "A password policy covering also PIN settings is established, aligned to current industry standards or industry best practices, and defines the following criteria:\\n\u2212Password expiration,\\n\u2212 Password length, composition, complexity, and other restrictions,\\n\u2212 Password reuse,\\n\u2212 Lockout after failed authentication attempts, and remedy.\\n\u2212 Password requirements may be modified as necessary for specific use cases:\\n o In combination with a second factor (for example, one-time password),\\n o Authentication target (for example, operating system, application, mobile device, token),\\n o Type of account (general operator, privileged operator, application-to-application account or local authentication keys).\\n More good practice guidelines on password and PIN parameter settings can be found in SWIFT Knowledge Base TIP 5021567 and 5022038."
+  },
+  {
+    "control_id": "4.1",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "The password policy is developed in consideration of known password-based vulnerabilities in the computing environment. For example, requiring a 15+ character password for Windows systems prevents Windows from computing the highly vulnerable LM (LAN Manager) password hash."
+  },
+  {
+    "control_id": "4.1",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "The established password policy is enforced through technical means (for example, through Active Directory group policy, or within application settings) where possible."
+  },
+  {
+    "control_id": "4.1",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Effectiveness of the password policy is reviewed regularly (recommended annually)."
+  },
+  {
+    "control_id": "4.1",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "System settings related to password management and storage are aligned to industry and vendor best practices (for example, enabling the \"NoLMHash\" registry setting in Windows)."
+  },
+  {
+    "control_id": "4.1",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Passwords used for secure zone systems are significantly more exposed if the passwords are stored in authentication systems outside of the secure zone (for example, an enterprise Active Directory). Instead, passwords for secure zone systems are, to the fullest extent possible, stored only within the zone (for example, in an Active Directory for production systems) as described in the guidance for the design of the secure zone or another existing secure zone that has similar controls.\\n Note: It is important that users implement strong passwords, and preferably strong authentication, for all systems used within the end-to-end transaction chain, and not limit these controls to only the SWIFT infrastructure."
+  },
+  {
+    "control_id": "4.2",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "When implementing multi-factor authentication, the following principles apply:\\n\u2212 When based on a knowledge factor (typically a password) combined with a possession factor (a mobile device), the device used for the second factor must not be the same as the device used to enter the first factor. As such, using an app to generate the second factor on the same device/PC used to enter the first factor (password) is not deemed sufficient to access the local SWIFT systems.\\n o Second factor solutions based on a possession factor include (not exhaustive list): TOTP, RSA SecurID, Digipass, Mobile App, Transaction Authentication Number (TAN) Table, personal USB token. Solution to be selected as per user's own risk management.\\n\u2212An inherence factor is more safely combined with a possession factor than with a knowledge factor."
+  },
+  {
+    "control_id": "4.2",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Multi-factor authentication is implemented at least on one authentication stage/step faced by the system administrator or the end user when accessing a SWIFT application or its hosting system:\\n\u2212For operating system administrators when accessing the hosting system:\\n o At the secure zone boundary (jump server),\\n o At the dedicated operator PC log-in (within the secure zone).\\n\u2212For end users in descending order of security robustness when accessing the SWIFT application:\\n o On the individual SWIFT applications (on the browser-based GUI, on the messaging interface, or on the communication interface),\\n o At the secure zone boundary (jump server),\\n o At the dedicated operator PC log-in (i.e. within the secure zone)."
+  },
+  {
+    "control_id": "4.2",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Multi-factor authentication is implemented for remote user administrative access, generally for VPN authentication."
+  },
+  {
+    "control_id": "4.2",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Multi-factor authentication systems are significantly more exposed if the authentication credentials are stored outside of the secure zone (for example, within an enterprise Active Directory). If feasible, the authentication system supporting the multi-factor solution is located within the secure zone."
+  },
+  {
+    "control_id": "4.2",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "The authentication factors presented are individually assigned and support individual accountability of access to services, operating system, and applications."
+  },
+  {
+    "control_id": "4.2",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "If single sign-on (for example, SAML) is implemented, then a second factor is still required at the single signon, or at a later stage."
+  },
+  {
+    "control_id": "4.2",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "MFA is also to be presented when accessing, at least for transaction processing36, a SWIFT related service, application or component operated by a service provider (such as a service bureau, an L2BA provider or intermediate actor).\\n Note: All SWIFT and SWIFT-compatible third-party vendor messaging and communication interfaces must support or embed multi-factor authentication."
+  },
+  {
+    "control_id": "5.1",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "A logical access control policy is documented and enforced to consider the following principles:"
+  },
+  {
+    "control_id": "5.1",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Need-to-know.\\n\u2212Only operators (end users and administrators) who have a continuing requirement to access the secure zone are permitted to have accounts within the secure zone.\\n\u2212Privileges are only assigned to an operator with a validated need-to-know (for example, system setup ensures that operators only have access to the information, files, and system resources necessary for their defined tasks). Access to other system functions is disabled."
+  },
+  {
+    "control_id": "5.1",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Least Privilege.\\n\u2212The system setup ensures that user and administrator privileges are controlled in a way that allows all privileges to be tailored to individual needs \\n\u2212Accounts are granted only the privileges that are required for normal, routine operation. Additional privileges are only granted on a temporary basis."
+  },
+  {
+    "control_id": "5.1",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Segregation of Duties and 4-Eyes.\\n\u2212Vendor documented guidance on role separation is followed in vendor-specific documentation.\\n\u2212Sensitive duties are separated. This means that some roles cannot be represented by the same individual, such as:\\n o Transaction submission and transaction approval\\n o Application Administrator and security officer roles\\n o Network and operating system administrators.\\n \u2212 Sensitive permissions are separated to prevent by-passing the 4-Eyes principle. At a minimum, this requirement applies to access control and security configuration operations on the following components: Messaging and Communication Interface, HSMs, SWIFTNet Online Operations Manager, and Secure Channel."
+  },
+  {
+    "control_id": "5.1",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Account Review and Revocation\\n\u2212Privileges are promptly revoked when an employee changes roles or leaves the organisation.\\n\u2212Accounts are reviewed at least annually (ideally more frequently) and adjusted as required to enforce access security principles."
+  },
+  {
+    "control_id": "5.1",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "An emergency procedure to access privileged accounts is documented for use when authorised persons are unavailable due to unexpected circumstances:\\n\u2212Any operational use of the procedure is logged.\\n\u2212Access to the emergency privileged accounts is controlled. The usage is logged and the password is changed after emergency use."
+  },
+  {
+    "control_id": "5.2",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "A controlled process is used for the assignment and distribution of connected hardware or personal tokens used for SWIFT operations (for example USB token, HSM token, smart card)."
+  },
+  {
+    "control_id": "5.2",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Token assignment is reviewed at least annually (ideally more frequently)"
+  },
+  {
+    "control_id": "5.2",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Personally assigned hardware tokens are revoked when the individual no longer requires access and should possibly be recalled (for disposal or reassignment as appropriate)."
+  },
+  {
+    "control_id": "5.2",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "A record is maintained of assigned hardware tokens ownership"
+  },
+  {
+    "control_id": "5.2",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Hardware tokens are physically removed from the system and secured or supervised when not in use."
+  },
+  {
+    "control_id": "5.2",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "When a remote PED is used, the following security practices apply:\\n\u2212PED keys must be stored and only accessible by relevant staff (originals and copies should be stored in a safe and access is tracked)\\n\u2212Although the HSM PED keys are not personally assigned, usage should be controlled, tracked and monitored. In case a PIN is set on the PED keys and a person with access to these keys and PIN is leaving the company, the PIN codes should be changed\\n\u2212The flows to the HSM must be secured as per the Alliance Security Guidance considering also the CSP FAQ (SWIFT Knowledge Base TIP 5021823) to properly establish and manage the connection."
+  },
+  {
+    "control_id": "5.3A",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "To the extent permitted under applicable laws and regulations and to the extent the information is available, the below guidelines and specified verifications are recommended:"
+  },
+  {
+    "control_id": "5.3A",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "All in-scope personnel are vetted at least every 5 years.\\n\u2212For those already in the role and not yet vetted, a catch-up process is gradually organised as part of the periodic vetting (sometimes also referred to as re-vetting)"
+  },
+  {
+    "control_id": "5.3A",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "The vetting process for initial employment includes the following verifications (to be conducted in accordance with applicable local laws and regulations37):\\n\u2212Identity verification,\\n\u2212Confirmation of full details of qualifications,\\n\u2212Confirmation of previous employment history,\\n\u2212Details of any past or pending civil or criminal proceedings against the employee,\\n\u2212Validation of any involvement in external businesses that could result in a conflict of interest,\\n\u2212Financial credit verification."
+  },
+  {
+    "control_id": "5.3A",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "The periodic vetting process includes the following verifications (to be conducted in accordance with applicable local laws and regulations29):\\n\u2212Details of any pending civil or criminal proceedings against the employee,\\n\u2212Validation of any involvement in external businesses that could result in a conflict of interest,\\n\u2212Financial credit verification."
+  },
+  {
+    "control_id": "5.4",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Passwords written on physical media are protected via:\\n\u2212Placement inside a sealed, tamper-evident security envelope,\\n\u2212Storage in a safe,\\n\u2212Logging of access to the storage location and which account's password was accessed."
+  },
+  {
+    "control_id": "5.4",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Passwords stored logically (digitally) are protected via:\\n\u2212Encryption-at-rest or obfuscation (that is, no plain-text storage),\\n\u2212Authenticated access to the storage location, ideally with logging of access."
+  },
+  {
+    "control_id": "5.4",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Passwords are not recorded in user manuals or other operational material unless the password is stored in accordance with the guidance above."
+  },
+  {
+    "control_id": "5.4",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "If emergency access is granted to an operator who under normal conditions would not have access, the password is changed immediately thereafter, and optionally also the combination to the storage safe."
+  },
+  {
+    "control_id": "5.4",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Passwords are not hardcoded in scripts or other software code."
+  },
+  {
+    "control_id": "5.4",
+    "guideline_title": "Optional Enhancement",
+    "guideline_item": "The safe is certified through, for example, Underwriters Laboratories (UL) Class TL or EN-1143-1 certification."
+  },
+  {
+    "control_id": "6.1",
+    "guideline_title": "Optional Enhancement",
+    "guideline_item": "On-access anti-malware scanning (also known as real-time or background scanning) is performed on all inscope systems. On-demand full scanning is scheduled at least on a weekly basis for operator PCs (ideally on a daily basis). On-demand full scanning should be scheduled regularly for servers in line with business and operational constraints. For performance reasons, full scans are performed at times of low usage and/or outside of business hours."
+  },
+  {
+    "control_id": "6.1",
+    "guideline_title": "Optional Enhancement",
+    "guideline_item": "The scope of the scanning should include all files of the systems in scope. Exclusion of elements or directory from scanning is subject to risk assessment considering user's infrastructure setup, internal security requirements and policies, the product capabilities and the following principles:\\n\u2212Software (such as exe, libraries, scripts) and static data (such as configuration files) are expected to be scanned on-access or at installation, and regularly thereafter, when complemented with a run time integrity mechanism (in line with the software integrity check depicted in control 6.2) allowing the identification of file changes or unexpected additions.\\n\u2212Database server content (data files) can be excluded from the scanning when the data has been checked, validated and scanned at least once before being stored."
+  },
+  {
+    "control_id": "6.1",
+    "guideline_title": "Optional Enhancement",
+    "guideline_item": "Anti-malware software from a reputable vendor is installed on all computing platforms and updated in line with the scanning frequency."
+  },
+  {
+    "control_id": "6.1",
+    "guideline_title": "Optional Enhancement",
+    "guideline_item": "Systems that fail to update their profiles or run scheduled scans are detected and corrected."
+  },
+  {
+    "control_id": "6.1",
+    "guideline_title": "Optional Enhancement",
+    "guideline_item": "Anti-malware software is tested for compatibility with the operational environment."
+  },
+  {
+    "control_id": "6.1",
+    "guideline_title": "Optional Enhancement",
+    "guideline_item": "Anti-malware software is configured in prevent mode if possible, after assessing for operational impact. It is recommended to configure the anti-malware software to quarantine suspicious files and raising an alarm to user's security department instead of immediately deleting them. This allows the user's security department to investigate the alert and possibly prevent future 'false positives' while allowing the recovery of files in case it is confirmed they are legitimate."
+  },
+  {
+    "control_id": "6.1",
+    "guideline_title": "Optional Enhancement",
+    "guideline_item": "Files to be sent should be scanned at least once at any stage/step of their internal processing and ideally as close as possible to their transfer into the SWIFT network. This is to ensure that such files do not contain viruses or malware that may create risks for the sender, for SWIFT, or for the receiver."
+  },
+  {
+    "control_id": "6.1",
+    "guideline_title": "Optional Enhancement",
+    "guideline_item": "Endpoint Protection Platform (EPP) solution, combined or not with Endpoint Detection and Response (EDR) offering similar control on the infrastructure can be considered as a valid implementation."
+  },
+  {
+    "control_id": "6.1",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Anti-malware systems use a combination of signature-based and heuristic-based capabilities."
+  },
+  {
+    "control_id": "6.1",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Anti-malware solutions are, when technically possible, implemented on non-Windows systems."
+  },
+  {
+    "control_id": "6.1",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "On-demand full scanning is scheduled at least on a weekly basis on servers."
+  },
+  {
+    "control_id": "6.2",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Software integrity checks are conducted on in-scope components upon start-up, and additionally at least once per day."
+  },
+  {
+    "control_id": "6.2",
+    "guideline_title": "Options for implementation",
+    "guideline_item": "Integrated into the product,"
+  },
+  {
+    "control_id": "6.2",
+    "guideline_title": "Options for implementation",
+    "guideline_item": "Third-party file integrity monitoring (FIM) tool."
+  },
+  {
+    "control_id": "6.2",
+    "guideline_title": "Options for implementation",
+    "guideline_item": "Integrity check of downloaded software is conducted via verification of the checksum at the time of its deployment."
+  },
+  {
+    "control_id": "6.2",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "An integrity check is performed in memory."
+  },
+  {
+    "control_id": "6.2",
+    "guideline_title": "Options for implementation",
+    "guideline_item": "An integrity check is performed at the operating system level."
+  },
+  {
+    "control_id": "6.2",
+    "guideline_title": "Options for implementation",
+    "guideline_item": "File Integrity Monitoring covers the products with integrated mechanisms."
+  },
+  {
+    "control_id": "6.2",
+    "guideline_title": "Options for implementation",
+    "guideline_item": "Systems within the secure zone implement application whitelisting on the operating system which allows only known and trusted applications to be executed."
+  },
+  {
+    "control_id": "6.3",
+    "guideline_title": "Options for implementation",
+    "guideline_item": "Database integrity check functionality is enabled to ensure integrity at record level (checksum or signature of the records) and confirm that there are no gaps in sequential transaction numbering."
+  },
+  {
+    "control_id": "6.3",
+    "guideline_title": "Options for implementations",
+    "guideline_item": "Integrated into the messaging interface application,"
+  },
+  {
+    "control_id": "6.3",
+    "guideline_title": "Options for implementations",
+    "guideline_item": "Integrated into the database product."
+  },
+  {
+    "control_id": "6.3",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "A full database integrity check is performed at regularly timed intervals, ideally every two weeks."
+  },
+  {
+    "control_id": "6.3",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "The integrity check performs a full referential check on all records (for example, no orphan records between tables) and searches for any unexpectedly deleted records."
+  },
+  {
+    "control_id": "6.3",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "A dedicated database instance is used for SWIFT purposes."
+  },
+  {
+    "control_id": "6.4",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Overall goals for logging and monitoring:\\n\u2212Implement a plan for logging of security-relevant activities and configure alarms for suspicious security events (when supported by the application).\\n\u2212Implement a plan for monitoring of security events in logs and for monitoring of other data (for example, real-time business activities through the GUI), and establish a plan to treat reported alarms."
+  },
+  {
+    "control_id": "6.4",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "All logging and monitoring activity complies with applicable laws and regulations, and employment contracts which supersede any implementation guidance."
+  },
+  {
+    "control_id": "6.4",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Logging:\\n\u2212Logging capabilities are implemented to detect abnormal usage within the secure zone as well as any attempts to undermine the effectiveness of controls within the secure zone.\\n\u2212Logs provide traceability of account usage to the appropriate individual.\\n\u2212Messaging and communication interface application audit logs are retained for no less than 12 months and are sufficiently protected from an enterprise administrator-level compromise (for example, log files are transferred to a separate system with different system administrator credentials).\\n\u2212Operator PC, firewall and database audit logs are retained for no less than 31 days.\\n\u2212Minimum logs to be recorded include:\\n o Command line history for privileged operating system accounts on servers,\\n o Messaging and communication interface application and operating system logs which detail abnormal system behaviour (for example, activity outside normal business hours, multiple failed log-in attempts, authentication errors, changes to user groups),\\n o Firewall logs,\\n o Database logs (if available, and as a minimum in the case of hosted database solutions)."
+  },
+  {
+    "control_id": "6.4",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Monitoring:\\n\u2212Procedures are in place to identify suspicious log-in activities into any privileged operating system or application accounts within the secure zone.\\n\u2212Monitoring processes are in place to review server, application and database monitoring data of the secure zone either daily via human reviews or via automated monitoring with alerting.\\n\u2212Monitoring processes are in place to review network monitoring data on a regular basis.\\n\u2212Unusual or suspicious activity is reported for further investigation to the appropriate security team."
+  },
+  {
+    "control_id": "6.4",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "A centralised logging capability is implemented, minimising the number of log locations to be inspected."
+  },
+  {
+    "control_id": "6.4",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Session recording is implemented to record all activity conducted by privileged accounts on SWIFT secure zone servers."
+  },
+  {
+    "control_id": "6.5A",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "The intrusion detection system is configured to detect anomalous activity within the secure zone and at the boundary of the secure zone. This can be achieved through NIDS and/or HIDS depending on the network configuration (for instance large VLAN would better benefit of NIDS; isolated islands segregating systems may favour HIDS on those systems). The EDR solution can also be considered."
+  },
+  {
+    "control_id": "6.5A",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Network activity to be tracked for intrusion detection analysis may include:\\n\u2212Inbound and outbound connections during non-business hours,\\n\u2212Unexpected connections from the secure zone towards other systems within or outside of the perimeter of the SWIFT secure zone,\\n\u2212Unexpected port or protocol use (for example, P2P)."
+  },
+  {
+    "control_id": "6.5A",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "The system has a repeatable process to regularly update known intrusion signatures."
+  },
+  {
+    "control_id": "6.5A",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "If an intrusion is detected, an alarm is raised and, if the tool permits, a defence mechanism is triggered manually or automatically."
+  },
+  {
+    "control_id": "6.5A",
+    "guideline_title": "Optional Enhancements",
+    "guideline_item": "Detected intrusions are managed via the standard incident response process."
+  },
+  {
+    "control_id": "6.5A",
+    "guideline_title": "Optional Enhancement",
+    "guideline_item": "Intrusion detection systems have the capability to inspect encrypted flows."
+  },
+  {
+    "control_id": "6.5A",
+    "guideline_title": "Considerations for alternative implementations",
+    "guideline_item": "Institutions with a high level of security information and event management (SIEM) maturity within their organisation may consider extending, as per the control 6.4, their SIEM for real-time analysis of network and systems intrusion. "
+  },
+  {
+    "control_id": "7.1",
+    "guideline_title": "Overall design goals for implementing environment segregation",
+    "guideline_item": "The user has developed and annually updates a cyber incident response plan. A formal backup and recovery plan exists for all critical business lines to support incident response activities.\\n\u2212The cyber incident response plan includes up-to-date contact details (internal and external when using third parties or service providers) and escalation timers. Such a plan has to incorporate:\\n o The Cyber Security Incident - Recovery roadmap that provides a non-exhaustive list of steps or actions that a customer must follow in case of a cyber security breach and refer to SWIFT Support. Details are outlined in SWIFT-ISAC Bulletin #10047.\\n o Internal security policies, laws, and regulations within a user's jurisdiction must be adhered to and considered in the cyber incident response planning."
+  },
+  {
+    "control_id": "7.1",
+    "guideline_title": "Overall design goals for implementing environment segregation",
+    "guideline_item": "As a minimum, the plan is reviewed on an annual basis, and tested at least every two years ensuring safe recovery of critical business operations with minimised outage time after a cybersecurity incident."
+  },
+  {
+    "control_id": "7.1",
+    "guideline_title": "Overall design goals for implementing environment segregation",
+    "guideline_item": "The cyber incident response plan includes steps to:\\n\u2212Promptly notify the appropriate internal stakeholders and leadership,\\n\u2212Promptly notify the relevant external organisational stakeholders (typically, regulator(s), supervisor(s), law enforcement authorities), Promptly notify the SWIFT Customer Support Centre through the default channel and to comply with other obligations applicable to users in case of a security incident including the obligation to cooperate and provide forensic materials as may be required by SWIFT,\\n\u2212Promptly contain or isolate the impacted system to limit the exposure of the attack whilst still be able to identify rogue activities,\\n\u2212Involve skilled cybersecurity professionals to identify and address the cyber incident. It is the user\u2019s responsibility to take prompt corrective action to investigate, clean the full infrastructure and resume secure operations as soon as possible,\\n\u2212Review the correctness of the user current attestation(s) and, as applicable under the SWIFT Security Controls Policy, invalidate such attestation(s) and submit new attestation(s),\\n\u2212Conduct post-incident problem analysis to identify and remediate vulnerabilities,\\n\u2212Fully document the incident."
+  },
+  {
+    "control_id": "7.1",
+    "guideline_title": "Overall design goals for implementing environment segregation",
+    "guideline_item": "The user has a documented plan for the timely sharing of threat information to intelligence-sharing organisations, law enforcement/local regulators (as required in each users' jurisdiction) and to SWIFT. Sharing of threat information may potentially support root cause analysis and sharing of anonymised Indicators of Compromises (IOC) with the community."
+  },
+  {
+    "control_id": "7.1",
+    "guideline_title": "Overall design goals for implementing environment segregation",
+    "guideline_item": "Information to be shared is first evaluated to ensure compliance with applicable laws and regulations (for example, privacy of personal data, confidentiality of investigations) and protects against the unintended sharing of sensitive data or data beyond the relevance of the incident."
+  },
+  {
+    "control_id": "7.1",
+    "guideline_title": "Overall design goals for implementing environment segregation",
+    "guideline_item": "The user has the capability to consume threat intelligence shared by SWIFT, for example in the form of IOCs. The user has procedures in place to:\\n\u2212Ensure the information is distributed to the correct contacts within the organisation,\\n\u2212Block traffic to/from IP-addresses/URLs mentioned in the IOCs."
+  },
+  {
+    "control_id": "7.1",
+    "guideline_title": "Optional Enhancement",
+    "guideline_item": "User can integrate the SWIFT ISAC automated feed solution in its environment."
+  },
+  {
+    "control_id": "7.2",
+    "guideline_title": "Optional Enhancement",
+    "guideline_item": "Staff complete annual security awareness and training. Topics may include:\\n\u2212SWIFT-related products and services training (for example, via SWIFTSmart which is available to all users),\\n\u2212Cybersecurity threat awareness within the financial services industry or relevant to staff's role and responsibilities,\\n\u2212Risks related to internet usage or deployment in the cloud\\n\u2212Password security and management,\\n\u2212Device security,\\n\u2212Safe operating habits (for example, spam and phishing, including \u201cspear39\u201d phishing identification, downloading files, browsing practices),\\n\u2212Reporting of suspicious events and activities,\\n\u2212Detection and response to cyber incidents in line with the organisation's response plan,\\n\u2212Internal or external programme that optionally allows staff to obtain and maintain certifications."
+  },
+  {
+    "control_id": "7.2",
+    "guideline_title": "Optional Enhancement",
+    "guideline_item": "Training is delivered through the most appropriate channel, including computer-based training, classroom training, webinars."
+  },
+  {
+    "control_id": "7.2",
+    "guideline_title": "Optional Enhancement",
+    "guideline_item": "Persons who have access to SWIFT applications, data, certificates, network, etc. have an adequate knowledge level and are aware of the pertinent cyber risks (for example, through IOCs published by SWIFT), best practice behaviours, and processes."
+  },
+  {
+    "control_id": "7.2",
+    "guideline_title": "Optional Enhancement",
+    "guideline_item": "Social engineering testing, including fake phishing emails campaign, is performed to challenge and enhance the security awareness."
+  },
+  {
+    "control_id": "7.3A",
+    "guideline_title": "Optional Enhancement",
+    "guideline_item": "The organisation uses a risk-based approach to determine the preferred scope (for example, the secure zone, or a specific server including potential other services supporting the secure zone), method (for example, white box test, black box test) and attack origin (for example, internal, from within or outside the secure zone, or external attack) for the test."
+  },
+  {
+    "control_id": "7.3A",
+    "guideline_title": "Optional Enhancement",
+    "guideline_item": "Penetration testing is performed at least every 2 years, and ideally as well after significant changes to the environment (for example, introduction of new/different servers, new operating systems, underlying technology such as virtualisation or new network device technology, network design change)."
+  },
+  {
+    "control_id": "7.3A",
+    "guideline_title": "Optional Enhancement",
+    "guideline_item": "Penetration testing is carefully planned and performed to avoid potential availability or integrity impacts."
+  },
+  {
+    "control_id": "7.3A",
+    "guideline_title": "Optional Enhancement",
+    "guideline_item": "Penetration testing is performed by expert staff independent from the team in charge of the SWIFT infrastructure (internal Red Team or external resources)."
+  },
+  {
+    "control_id": "7.3A",
+    "guideline_title": "Optional Enhancement",
+    "guideline_item": "Network component and host penetration testing (for example, rule bases and configurations review) are performed in the service production environment or in pre-production environment replicating the live environment."
+  },
+  {
+    "control_id": "7.3A",
+    "guideline_title": "Optional Enhancement",
+    "guideline_item": "Sufficient safeguards are in place to minimise any operational impact from conducting the penetration test."
+  },
+  {
+    "control_id": "7.3A",
+    "guideline_title": "Optional Enhancement",
+    "guideline_item": "The outcome of the penetration testing is documented (with restricted access) and used as an input for the security update process. \\n Note: The CSP FAQ (SWIFT Knowledge Base TIP 5021823) provides additional details on the scoping and the testing scenarios to consider."
+  },
+  {
+    "control_id": "7.3A",
+    "guideline_title": "Optional Enhancement",
+    "guideline_item": "Penetration testing is performed on SWIFT-specific applications while adhering to the SWIFT Customer Testing Policy. This SWIFT-specific application penetration testing is performed in the testing environment to avoid potential availability or integrity impacts."
+  },
+  {
+    "control_id": "7.4A",
+    "guideline_title": "Optional Enhancement",
+    "guideline_item": "A scenario-based risk assessment and planning activity is conducted to:\\n\u2212Identify possible methods for adversaries to gain unauthorised access to local SWIFT infrastructure based upon observed adversary techniques or plausible adversary techniques inferred from adversaries' motivations and capabilities,\\n\u2212Analyse the effectiveness of existing prevention and detection controls to mitigate anticipated adversary techniques to gain unauthorised access to the environment,\\n\u2212Analyse the probability and impact of significant and plausible attack vectors given existing controls,\\n\u2212Analyse the effectiveness of existing response controls to limit impact of significant and plausible attack vectors given existing controls, Identify the need for additional preventive or detective controls."
+  },
+  {
+    "control_id": "7.4A",
+    "guideline_title": "Optional Enhancement",
+    "guideline_item": "Assessment and planning activity is conducted at least annually, and updated via ongoing risk management activities, when significant technology changes occur, or when threat intelligence indicates relevant changes in an applicable adversary\u2019s capabilities or motivations."
+  },
+  {
+    "control_id": "7.4A",
+    "guideline_title": "Optional Enhancement",
+    "guideline_item": "Current threat intelligence and observed/likely attacks (vectors, techniques, actors, etc.) are used as the basis for viable scenarios."
+  },
+  {
+    "control_id": "7.4A",
+    "guideline_title": "Optional Enhancement",
+    "guideline_item": "Each asset class (end user devices, servers, network devices) is assessed against threats on a regular basis and when changes are introduced or when new threats are identified."
+  }
+]

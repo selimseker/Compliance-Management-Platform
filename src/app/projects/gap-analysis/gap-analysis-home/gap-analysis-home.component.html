@@ -1,0 +1,62 @@
+<div
+    class="container d-flex justify-content-center h-100"
+    *ngIf="onScreenControls.length==0"
+>
+    <mat-spinner class=" align-self-center"></mat-spinner>
+</div>
+<div
+    class="container-fluid d-flex flex-column p-3 h-100"
+    (click)="false; $event.stopPropagation();"
+    *ngIf="onScreenControls.length!=0"
+>
+
+    <h2 *ngIf="!(project==null || standard==null)">Gap Analysis / {{project.company.name}} / {{standard.name}}</h2>
+    <div class="container d-flex flex-column border flex-grow-1 p-3">
+        <h3 class="h3">{{title}} </h3>
+
+        <app-analysis-stats
+            *ngIf="onStats && onScreensNumberOfDones.size==domains.length"
+            class="h-100"
+            [domains]="domains"
+            [domains_number_dones]="onScreensNumberOfDones"
+            [projectID]="project._id"
+        ></app-analysis-stats>
+        <button
+            *ngIf="onStats"
+            mat-raised-button
+            class="mt-auto ml-auto"
+            color="primary"
+            (click)="moveToGapAnalysis()"
+        >MOVE TO GAP ANALYSIS</button>
+
+
+
+        <app-controls-list
+            *ngIf="!onStats && !onControlPage"
+            class="flex-grow-1"
+            (itemClickEvent)="onItemClicked($event)"
+            [controls]="onScreenControls"
+            [controlsNumberOfDone]="onScreensNumberOfDones"
+        ></app-controls-list>
+
+        <app-control-page
+            *ngIf="onControlPage"
+            class="flex-grow-1"
+            [control]="clickedControl"
+            [projectID]="project._id"
+            (entryDone)="onEntryDone($event)"
+        ></app-control-page>
+
+
+        <button
+            *ngIf="!onStats"
+            mat-raised-button
+            class="mr-auto mt-auto"
+            color="primary"
+            [disabled]="onDomains"
+            (click)="onGoBack()"
+        >BACK</button>
+
+    </div>
+
+</div>

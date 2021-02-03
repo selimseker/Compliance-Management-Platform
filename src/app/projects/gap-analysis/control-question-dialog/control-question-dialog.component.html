@@ -1,0 +1,52 @@
+<form
+    (submit)="onDone()"
+    #postForm="ngForm"
+>
+    <div class="container mt-3 mb-3 d-flex flex-column">
+
+        <h3> {{data.control.info.title}} </h3>
+        <mat-divider></mat-divider>
+        <p class="mt-3"> {{data.checklist.checklist}} </p>
+
+
+        <app-gap-analysis-answer
+            [default_answers]="default_answer"
+            [disable]="form_disabled"
+            (answers)="onFormChange($event)"
+        ></app-gap-analysis-answer>
+
+
+
+
+
+
+
+
+        <div class="d-flex flex-row  align-items-center mt-3">
+
+            <button
+                mat-raised-button
+                [disabled]="form_disabled || disableDoneButton"
+                color="primary"
+            >DONE</button>
+            <button
+                *ngIf="already_submitted"
+                type="button"
+                (click)="onEdit()"
+                mat-raised-button
+                [disabled]="!already_submitted"
+                class="ml-2"
+            >EDIT</button>
+            <span
+                *ngIf="already_submitted"
+                class="text-danger ml-5"
+            >Already Submitted</span>
+            <span
+                *ngIf="isEntrySubmited"
+                class="text-success ml-5"
+            >Submitted!</span>
+        </div>
+
+
+    </div>
+</form>
