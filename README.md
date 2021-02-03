@@ -32,15 +32,15 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 ## Screenshots
 
-<img src="/home/selim/Desktop/compManegementProject/web-app/complianceManegement/imgs/Screenshot_2021-02-03 ComplianceManegement.png" alt="Screenshot_2021-02-03 ComplianceManegement" style="zoom: 50%;" />
+<img src="./imgs/Screenshot_2021-02-03 ComplianceManegement.png" alt="Screenshot_2021-02-03 ComplianceManegement" style="zoom: 50%;" />
 
-<img src="/home/selim/Desktop/compManegementProject/web-app/complianceManegement/imgs/Screenshot_2021-02-03 ComplianceManegement(1).png" alt="Screenshot_2021-02-03 ComplianceManegement(1)" style="zoom:50%;" />
+<img src="./imgs/Screenshot_2021-02-03 ComplianceManegement(1).png" alt="Screenshot_2021-02-03 ComplianceManegement(1)" style="zoom:50%;" />
 
-<img src="/home/selim/Desktop/compManegementProject/web-app/complianceManegement/imgs/Screenshot_2021-02-03 ComplianceManegement(2).png" alt="Screenshot_2021-02-03 ComplianceManegement(2)" style="zoom:50%;" />
+<img src="./imgs/Screenshot_2021-02-03 ComplianceManegement(2).png" alt="Screenshot_2021-02-03 ComplianceManegement(2)" style="zoom:50%;" />
 
-<img src="/home/selim/Desktop/compManegementProject/web-app/complianceManegement/imgs/Screenshot_2021-02-03 ComplianceManegement(4).png" alt="Screenshot_2021-02-03 ComplianceManegement(4)" style="zoom:50%;" />
+<img src="./imgs/Screenshot_2021-02-03 ComplianceManegement(4).png" alt="Screenshot_2021-02-03 ComplianceManegement(4)" style="zoom:50%;" />
 
-<img src="/home/selim/Desktop/compManegementProject/web-app/complianceManegement/imgs/Screenshot_2021-02-03 ComplianceManegement(5).png" alt="Screenshot_2021-02-03 ComplianceManegement(5)" style="zoom:50%;" />
+<img src="./imgs/Screenshot_2021-02-03 ComplianceManegement(5).png" alt="Screenshot_2021-02-03 ComplianceManegement(5)" style="zoom:50%;" />
 
 
 
